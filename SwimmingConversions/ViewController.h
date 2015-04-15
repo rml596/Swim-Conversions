@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property int enteredMinutesTime;
+@property int enteredSecondsTime;
+@property int enteredMilisecondsTime;
+
+@property int convertedMinutes;
+@property int convertedSeconds;
+@property int convertedMiliseconds;
 
 
 @end
