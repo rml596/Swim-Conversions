@@ -9,10 +9,10 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
+int fullTime;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

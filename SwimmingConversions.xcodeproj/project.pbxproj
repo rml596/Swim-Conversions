@@ -14,6 +14,7 @@
 		664D60131ADEB3AA007EFA0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664D60121ADEB3AA007EFA0A /* Images.xcassets */; };
 		664D60161ADEB3AA007EFA0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664D60141ADEB3AA007EFA0A /* LaunchScreen.xib */; };
 		664D60221ADEB3AA007EFA0A /* SwimmingConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 664D60211ADEB3AA007EFA0A /* SwimmingConversionsTests.m */; };
+		6693FFB01AF126C900FD8E78 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6693FFAF1AF126C900FD8E78 /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		664D601B1ADEB3AA007EFA0A /* SwimmingConversionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimmingConversionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		664D60201ADEB3AA007EFA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		664D60211ADEB3AA007EFA0A /* SwimmingConversionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwimmingConversionsTests.m; sourceTree = "<group>"; };
+		6693FFAE1AF126C900FD8E78 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = ../WebViewController.h; sourceTree = "<group>"; };
+		6693FFAF1AF126C900FD8E78 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = ../WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				664D600A1ADEB3AA007EFA0A /* AppDelegate.m */,
 				664D600C1ADEB3AA007EFA0A /* ViewController.h */,
 				664D600D1ADEB3AA007EFA0A /* ViewController.m */,
+				6693FFAE1AF126C900FD8E78 /* WebViewController.h */,
+				6693FFAF1AF126C900FD8E78 /* WebViewController.m */,
 				664D600F1ADEB3AA007EFA0A /* Main.storyboard */,
 				664D60121ADEB3AA007EFA0A /* Images.xcassets */,
 				664D60141ADEB3AA007EFA0A /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				664D600E1ADEB3AA007EFA0A /* ViewController.m in Sources */,
 				664D600B1ADEB3AA007EFA0A /* AppDelegate.m in Sources */,
 				664D60081ADEB3AA007EFA0A /* main.m in Sources */,
+				6693FFB01AF126C900FD8E78 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +422,7 @@
 				664D60271ADEB3AA007EFA0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		664D60281ADEB3AA007EFA0A /* Build configuration list for PBXNativeTarget "SwimmingConversionsTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +431,7 @@
 				664D602A1ADEB3AA007EFA0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

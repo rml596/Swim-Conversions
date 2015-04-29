@@ -9,13 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-@property int enteredMinutesTime;
-@property int enteredSecondsTime;
-@property int enteredMilisecondsTime;
-
-@property int convertedMinutes;
-@property int convertedSeconds;
-@property int convertedMiliseconds;
+@property (strong, nonatomic) IBOutlet UITextField *minutes;
+@property (strong, nonatomic) IBOutlet UITextField *seconds;
+@property (strong, nonatomic) IBOutlet UITextField *miliseconds;
+@property (strong, nonatomic) IBOutlet UIButton *convertButton;
 
 
 @end
