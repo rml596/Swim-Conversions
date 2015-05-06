@@ -12,11 +12,20 @@
 @end
 
 @implementation ViewController
-int fullTime;
 
-- (void)viewDidLoad {
+int fullTime;
+int intSeconds;
+int intMinutes;
+int intMiliseconds;
+
+
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    intMinutes = self.minutes.text;
 }
 
 - (void)didReceiveMemoryWarning {
