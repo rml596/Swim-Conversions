@@ -26,8 +26,8 @@ double doubleMiliseconds;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _pickerData =@[@[@"50",@"100", @"200"],
-                   @[@"Fly",@"Back",@"Breast", @"Free", @"I.M."]];
+    _pickerData = @[@[@"50",@"100",@"200",@"NA"],@[@"Fly", @"Free",@"Back",@"Breast"]];
+    /*[@"50 Free",@"100 Free", @"200 Free", @"100 Fly", @"200 Fly", @"100 Back", @"200 Back",@"100 Breast", @"200 Breast"];*/
     self.strokePicker.dataSource=self;
     self.strokePicker.delegate=self;
     
@@ -40,10 +40,10 @@ double doubleMiliseconds;
     return 2;
 }
 -(int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return _pickerData.count;
+    return 4;
 }
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger) component{
-    return _pickerData[row];
+    return _pickerData[component][row];
 }
 
 - (void)didReceiveMemoryWarning {
