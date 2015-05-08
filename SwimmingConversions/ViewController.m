@@ -15,6 +15,7 @@
 @implementation ViewController
 
 NSArray *_pickerData;
+NSString *convert;
 double fullTime;
 double doubleSeconds;
 double doubleMinutes;
@@ -58,6 +59,8 @@ double convertedTime;
 }
 -(NSString *)fiftyFreeConversion{
     convertedTime=fullTime*1.11+.7;
+    convert=@"%d", convertedTime;
+    return convert;
 };
 
 @end
