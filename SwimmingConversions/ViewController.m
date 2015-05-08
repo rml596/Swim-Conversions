@@ -19,6 +19,7 @@ double fullTime;
 double doubleSeconds;
 double doubleMinutes;
 double doubleMiliseconds;
+double convertedTime;
 
 
 
@@ -35,6 +36,7 @@ double doubleMiliseconds;
     doubleMinutes = [self.minutes.text doubleValue];
     doubleSeconds = [self.seconds.text doubleValue]/10;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
 }
 -(int)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 2;
@@ -54,4 +56,8 @@ double doubleMiliseconds;
 {
     
 }
+-(NSString *)fiftyFreeConversion{
+    convertedTime=fullTime*1.11+.7;
+};
+
 @end
