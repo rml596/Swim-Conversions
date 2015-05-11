@@ -63,4 +63,26 @@ double convertedTime;
     return convert;
 };
 
+-(NSString *)hundredFreeConversion{
+convertedTime=fullTime*1.11+1.6;
+converted=@"%d",convertedTime;
+return convert;
+};
+
+-(NSString *)twoHundredFreeConversion{
+convertedTime=fullTime*1.11+3.2;
+converted=@"%d",convertedTime;
+return convert;
+};
+
+
+
+
+
+
+
 @end
+
+
+
+
