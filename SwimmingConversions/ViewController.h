@@ -15,7 +15,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *miliseconds;
 @property (strong, nonatomic) IBOutlet UIButton *convertButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *strokePicker;
-
+- (IBAction)dismissKeyboard:(id)sender;
+- (IBAction)convertTimes:(id)sender;
 
 @end
 

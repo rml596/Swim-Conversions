@@ -33,6 +33,12 @@ double convertedTime;
     self.strokePicker.dataSource=self;
     self.strokePicker.delegate=self;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     
     doubleMinutes = [self.minutes.text doubleValue];
     doubleSeconds = [self.seconds.text doubleValue]/10;
@@ -55,8 +61,17 @@ double convertedTime;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+
     
 }
+
+-(IBAction)dismissKeyboard:(id)sender{
+    [sender resignFirstResponder];
+}
+
+- (IBAction)convertTimes:(id)sender {
+}
+
 -(NSString *)fiftyFreeConversion{
     convertedTime=fullTime*1.11+.7;
     convert=@"%d", convertedTime;
@@ -64,15 +79,15 @@ double convertedTime;
 };
 
 -(NSString *)hundredFreeConversion{
-convertedTime=fullTime*1.11+1.6;
-converted=@"%d",convertedTime;
-return convert;
+    convertedTime=fullTime*1.11+1.6;
+    convert=@"%d",convertedTime;
+    return convert;
 };
 
 -(NSString *)twoHundredFreeConversion{
-convertedTime=fullTime*1.11+3.2;
-converted=@"%d",convertedTime;
-return convert;
+    convertedTime=fullTime*1.11+3.2;
+    convert=@"%d",convertedTime;
+    return convert;
 };
 
 

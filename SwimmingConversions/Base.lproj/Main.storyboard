@@ -55,6 +55,10 @@
                                 <state key="normal" title="Convert">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="convertTimes:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="VMi-mF-RaL"/>
+                                    <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eQE-AF-aPs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMn-23-osN">
                                 <rect key="frame" x="469" y="562" width="115" height="30"/>
@@ -117,8 +121,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvy-mu-Z1w">
-                                <rect key="frame" x="16" y="28" width="35" height="30"/>
-                                <state key="normal" title="Back">
+                                <rect key="frame" x="16" y="28" width="40" height="30"/>
+                                <state key="normal" title="Close">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
