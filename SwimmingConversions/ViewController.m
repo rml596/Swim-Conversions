@@ -72,10 +72,29 @@ double convertedTime;
     // Dispose of any resources that can be recreated.
 }
 
+//////////////////////////////////////delegate methods////////////////////////////////////////////////
+
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    //You'll use this method to get the selected row number and use it to get the the appropriate method
+    //You'll use this method to get the selected row and component number and use it to get the the appropriate method
+    //maybe use a switch statement with the different methods for each case (index)...or something like this.
+    //see http://nscookbook.com/2013/01/ios-programming-recipe-9-adding-multiple-columns-to-uipickerview/
+    
+    switch (row)
+    {
+        case 0:
+            [self fiftyFreeConversion];
+            break;
+        case 1:
+            [self hundredFreeConversion];
+            
+        default:
+            break;
+    }
+    
+    // you also need a method like updateLabel to update the main label at the top with the converted data.
+    //that would also be called here or in the actual conversion methods at the end
     
     
 }
