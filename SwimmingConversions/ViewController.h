@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *strokePicker;
 -  (IBAction)dismissKeyboard:(id)sender;
 - (IBAction)convertTimes:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *output;
 
 @end
 

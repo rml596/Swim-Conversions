@@ -83,11 +83,58 @@ double convertedTime;
     
     switch (row)
     {
-        case 0:
-            [self fiftyFreeConversion];
-            break;
         case 1:
-            [self hundredFreeConversion];
+            if(component==1){
+                [self fiftyFlyConversion];
+                self.output.text=convert;
+            }
+            else if (component==2){
+                [self fiftyBackConversion];
+                self.output.text=convert;
+            }
+            else if (component==3){
+                [self fiftyBreastConversion];
+                self.output.text=convert;
+            }
+            else if (component==4){
+                [self fiftyFreeConversion];
+                self.output.text=convert;
+            }
+            break;
+        case 2:
+            if(component==0){
+                [self hundredFlyConversion];
+                self.output.text=convert;
+            }
+            else if (component==1){
+                [self hundredBackConversion];
+                self.output.text=convert;
+            }
+            else if (component==2){
+                [self hundredBreastConversion];
+                self.output.text=convert;
+            }
+            else if (component==3){
+                [self hundredFreeConversion];
+                self.output.text=convert;
+            }
+        case 3:
+            if(component==0){
+                [self twoHundredFlyConversion];
+                self.output.text=convert;
+            }
+            else if (component==1){
+                [self twoHundredBackConversion];
+                self.output.text=convert;
+            }
+            else if (component==2){
+                [self twoHundredBreastConversion];
+                self.output.text=convert;
+            }
+            else if (component==3){
+                [self twoHundredFreeConversion];
+                self.output.text=convert;
+            }
             
         default:
             break;
@@ -109,14 +156,69 @@ double convertedTime;
 
 - (IBAction)convertTimes:(id)sender
 {
-    
-    
+ 
 }
 
+-(double)fiftyFlyConversion
+{
+    convertedTime=fullTime*1.11+.7;
+    //convert=convertedTime;        //This conversion can only be done within a method
+    return convertedTime;
+};
+-(double)hundredFlyConversion
+{
+    convertedTime=fullTime*1.11+1.4;
+    //convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    //return convert;
+    return convertedTime;
+};
+-(double)twoHundredFlyConversion
+{
+    convertedTime=fullTime*1.11+.7;
+    //convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    //return convert;
+    return convertedTime;
+};
+-(NSString *)fiftyBackConversion
+{
+    convertedTime=fullTime*1.11+.6;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
+};
+-(NSString *)hundredBackConversion
+{
+    convertedTime=fullTime*1.11+1.2;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
+};
+-(NSString *)twoHundredBackConversion
+{
+    convertedTime=fullTime*1.11+2.4;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
+};
+-(NSString *)fiftyBreastConversion
+{
+    convertedTime=fullTime*1.11+1;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
+};
+-(NSString *)hundredBreastConversion
+{
+    convertedTime=fullTime*1.11+2;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
+};
+-(NSString *)twoHundredBreastConversion
+{
+    convertedTime=fullTime*1.11+3.2;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
+};
 -(NSString *)fiftyFreeConversion
 {
     
-    convertedTime=fullTime*1.11+.7;
+    convertedTime=fullTime*1.11+.8;
     convert = @"%d", convertedTime;     //This conversion can only be done within a method
     return convert;
 };
@@ -134,8 +236,6 @@ double convertedTime;
     convert=@"%d",convertedTime;        //This conversion can only be done within a method
     return convert;
 };
-
-
 
 
 
