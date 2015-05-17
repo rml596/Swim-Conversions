@@ -83,25 +83,25 @@ double convertedTime;
     
     switch (row)
     {
-        case 1:
-            if(component==1){
+        case 0:
+            if(component==0){
                 [self fiftyFlyConversion];
                 self.output.text=convert;
             }
-            else if (component==2){
+            else if (component==1){
                 [self fiftyBackConversion];
                 self.output.text=convert;
             }
-            else if (component==3){
+            else if (component==2){
                 [self fiftyBreastConversion];
                 self.output.text=convert;
             }
-            else if (component==4){
+            else if (component==3){
                 [self fiftyFreeConversion];
                 self.output.text=convert;
             }
             break;
-        case 2:
+        case 1:
             if(component==0){
                 [self hundredFlyConversion];
                 self.output.text=convert;
@@ -118,7 +118,8 @@ double convertedTime;
                 [self hundredFreeConversion];
                 self.output.text=convert;
             }
-        case 3:
+            break;
+        case 2:
             if(component==0){
                 [self twoHundredFlyConversion];
                 self.output.text=convert;
@@ -135,6 +136,10 @@ double convertedTime;
                 [self twoHundredFreeConversion];
                 self.output.text=convert;
             }
+            break;
+        case 4:
+            self.output.text=@"Thanks for using our App!";
+            break;
             
         default:
             break;
@@ -159,25 +164,23 @@ double convertedTime;
  
 }
 
--(double)fiftyFlyConversion
+-(NSString *)fiftyFlyConversion
 {
     convertedTime=fullTime*1.11+.7;
-    //convert=convertedTime;        //This conversion can only be done within a method
-    return convertedTime;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
 };
--(double)hundredFlyConversion
+-(NSString *)hundredFlyConversion
 {
     convertedTime=fullTime*1.11+1.4;
-    //convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    //return convert;
-    return convertedTime;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
 };
--(double)twoHundredFlyConversion
+-(NSString *)twoHundredFlyConversion
 {
     convertedTime=fullTime*1.11+.7;
-    //convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    //return convert;
-    return convertedTime;
+    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    return convert;
 };
 -(NSString *)fiftyBackConversion
 {
