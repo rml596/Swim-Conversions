@@ -43,10 +43,7 @@ double convertedTime;
     [self.view addGestureRecognizer:tap];
     
     
-    doubleMinutes = [self.minutes.text doubleValue];
-    doubleSeconds = [self.seconds.text doubleValue]/10;
-    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
-    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+    
 }
 
 
@@ -166,8 +163,13 @@ double convertedTime;
 
 -(NSString *)fiftyFlyConversion
 {
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/10;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+    
     convertedTime=fullTime*1.11+.7;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
+    convert=@"%f",convertedTime;        //This conversion can only be done within a method
     return convert;
 };
 -(NSString *)hundredFlyConversion
