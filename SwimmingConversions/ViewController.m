@@ -168,7 +168,7 @@ double convertedTime;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=fullTime*1.11+.7;
+    convertedTime=(fullTime*1.11+.7)/60;
     return convertedTime;
 };
 -(double)hundredFlyConversion{
