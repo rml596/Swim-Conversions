@@ -61,6 +61,15 @@
                                     <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="xLZ-bQ-tFv"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfD-jx-HI7">
+                                <rect key="frame" x="109" y="236" width="103" height="30"/>
+                                <state key="normal" title="Tweet My Time">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tweet:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ah6-jd-Eic"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.73073710619999999" green="0.9327323569" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -106,8 +115,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjZ-Bq-KyF">
+                                <rect key="frame" x="0.0" y="46" width="320" height="522"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvy-mu-Z1w">
-                                <rect key="frame" x="16" y="28" width="40" height="30"/>
+                                <rect key="frame" x="16" y="20" width="40" height="30"/>
                                 <state key="normal" title="Close">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -115,19 +128,11 @@
                                     <segue destination="vXZ-lx-hvc" kind="modal" id="Ydn-lv-NRe"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjZ-Bq-KyF">
-                                <rect key="frame" x="0.0" y="20" width="320" height="539"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wjZ-Bq-KyF" firstAttribute="bottom" secondItem="bmZ-UP-Z28" secondAttribute="top" id="9gM-gi-2CM"/>
-                            <constraint firstItem="uvy-mu-Z1w" firstAttribute="top" secondItem="MKn-NJ-CI2" secondAttribute="bottom" constant="8" id="DXv-Bc-NAV"/>
-                            <constraint firstItem="wjZ-Bq-KyF" firstAttribute="leading" secondItem="1xO-mU-SVk" secondAttribute="leading" id="Mg0-g4-t5i"/>
-                            <constraint firstItem="wjZ-Bq-KyF" firstAttribute="top" secondItem="MKn-NJ-CI2" secondAttribute="bottom" id="tNp-tH-VdR"/>
-                            <constraint firstItem="uvy-mu-Z1w" firstAttribute="leading" secondItem="1xO-mU-SVk" secondAttribute="leadingMargin" id="vfN-gG-RM6"/>
-                            <constraint firstAttribute="trailing" secondItem="wjZ-Bq-KyF" secondAttribute="trailing" id="x09-rh-j1i"/>
+                            <constraint firstItem="uvy-mu-Z1w" firstAttribute="top" secondItem="MKn-NJ-CI2" secondAttribute="bottom" id="2F5-8N-3Vo"/>
+                            <constraint firstItem="uvy-mu-Z1w" firstAttribute="leading" secondItem="1xO-mU-SVk" secondAttribute="leadingMargin" id="dHj-xq-v9F"/>
                         </constraints>
                     </view>
                     <connections>

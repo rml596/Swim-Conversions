@@ -15,6 +15,7 @@
 		664D60161ADEB3AA007EFA0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664D60141ADEB3AA007EFA0A /* LaunchScreen.xib */; };
 		664D60221ADEB3AA007EFA0A /* SwimmingConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 664D60211ADEB3AA007EFA0A /* SwimmingConversionsTests.m */; };
 		6693FFB01AF126C900FD8E78 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6693FFAF1AF126C900FD8E78 /* WebViewController.m */; };
+		66F857E21B0B742700D1F14E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F857E11B0B742700D1F14E /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		664D60211ADEB3AA007EFA0A /* SwimmingConversionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwimmingConversionsTests.m; sourceTree = "<group>"; };
 		6693FFAE1AF126C900FD8E78 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = ../WebViewController.h; sourceTree = "<group>"; };
 		6693FFAF1AF126C900FD8E78 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = ../WebViewController.m; sourceTree = "<group>"; };
+		66F857E11B0B742700D1F14E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66F857E21B0B742700D1F14E /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +69,7 @@
 		664D5FF91ADEB3AA007EFA0A = {
 			isa = PBXGroup;
 			children = (
+				66F857E11B0B742700D1F14E /* Social.framework */,
 				664D60041ADEB3AA007EFA0A /* SwimmingConversions */,
 				664D601E1ADEB3AA007EFA0A /* SwimmingConversionsTests */,
 				664D60031ADEB3AA007EFA0A /* Products */,

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <Social/Social.h>
 
 @interface ViewController ()
 
@@ -158,6 +159,16 @@ double convertedTime;
                                         //anywhere on the screen if you're using a decimal keypad. Not required if you're going to use a standard qwerty keyboard. I think the former makes more sense.
 }
 
+- (IBAction)tweet:(id)sender {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *tweetSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [tweetSheet setInitialText:@"I love using this app!"];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
+    }
+}
+
 
 
 
@@ -168,7 +179,7 @@ double convertedTime;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime*1.11+.7)/60;
+    convertedTime=(fullTime*1.11+.7);
     return convertedTime;
 };
 -(double)hundredFlyConversion{
