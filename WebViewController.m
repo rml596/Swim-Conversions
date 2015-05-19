@@ -14,18 +14,51 @@
 
 @implementation WebViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    NSString *fullURL = @"www.swimswam.com/news/";
-    NSURL *url = [NSURL URLWithString:fullURL];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:requestObj];
+    [self loadWebRequest];
+  
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) loadWebRequest
+{
+    NSString *fullURL = @"www.swimswam.com/news/";
+    
+    NSURL *url = [NSURL URLWithString:fullURL];
+    
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    
+    [_webView loadRequest:requestObj];
+}
+
+
+-(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    [self.activityIndicator startAnimating];
+    return YES;
+}
+
+-(void) webViewDidFinishLoad: (UIWebView *) webView
+{
+    [self.activityIndicator stopAnimating];
+}
+
+-(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
+    [self.activityIndicator stopAnimating];
+    NSLog(@"Whoops");
+}
+
+
 
 /*
 #pragma mark - Navigation

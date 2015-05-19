@@ -159,14 +159,30 @@ double convertedTime;
                                         //anywhere on the screen if you're using a decimal keypad. Not required if you're going to use a standard qwerty keyboard. I think the former makes more sense.
 }
 
-- (IBAction)tweet:(id)sender {
+- (IBAction)tweet:(id)sender
+{
+    
+    
+    /*
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
         SLComposeViewController *tweetSheet = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeTwitter];
         [tweetSheet setInitialText:@"I love using this app!"];
         [self presentViewController:tweetSheet animated:YES completion:nil];
-    }
+    }*/
+    
+    
+    NSArray *activityItems;
+    activityItems = @[self.output.text];
+    
+    //NSArray *activityActions;
+    
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
+    [self presentViewController:activityController
+                       animated:YES completion:nil];
+    
 }
 
 
