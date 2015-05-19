@@ -27,6 +27,10 @@ double convertedTime;
 
 - (void)viewDidLoad
 {
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -83,55 +87,55 @@ double convertedTime;
         case 0:
             if(component==0){
                 [self fiftyFlyConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==1){
                 [self fiftyBackConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==2){
                 [self fiftyBreastConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==3){
                 [self fiftyFreeConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             break;
         case 1:
             if(component==0){
                 [self hundredFlyConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==1){
                 [self hundredBackConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==2){
                 [self hundredBreastConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==3){
                 [self hundredFreeConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             break;
         case 2:
             if(component==0){
                 [self twoHundredFlyConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==1){
                 [self twoHundredBackConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==2){
                 [self twoHundredBreastConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             else if (component==3){
                 [self twoHundredFreeConversion];
-                self.output.text=convert;
+                self.output.text=[NSString stringWithFormat:@"%g", convertedTime];
             }
             break;
         case 4:
@@ -156,90 +160,117 @@ double convertedTime;
 
 
 
-- (IBAction)convertTimes:(id)sender
-{
- 
-}
 
--(NSString *)fiftyFlyConversion
+-(double)fiftyFlyConversion
 {
     doubleMinutes = [self.minutes.text doubleValue];
-    doubleSeconds = [self.seconds.text doubleValue]/10;
+    doubleSeconds = [self.seconds.text doubleValue]/60;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
     convertedTime=fullTime*1.11+.7;
-    convert=@"%f",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)hundredFlyConversion
-{
+-(double)hundredFlyConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+    
+
     convertedTime=fullTime*1.11+1.4;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)twoHundredFlyConversion
-{
+-(double)twoHundredFlyConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+.7;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)fiftyBackConversion
-{
+-(double)fiftyBackConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+.6;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)hundredBackConversion
-{
+-(double)hundredBackConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+1.2;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)twoHundredBackConversion
-{
+-(double)twoHundredBackConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+2.4;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)fiftyBreastConversion
-{
+-(double)fiftyBreastConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+1;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)hundredBreastConversion
-{
+-(double)hundredBreastConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+2;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
--(NSString *)twoHundredBreastConversion
-{
+-(double)twoHundredBreastConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+3.2;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
-};
--(NSString *)fiftyFreeConversion
-{
+    return convertedTime;};
+-(double)fiftyFreeConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     
     convertedTime=fullTime*1.11+.8;
-    convert = @"%d", convertedTime;     //This conversion can only be done within a method
-    return convert;
-};
+    return convertedTime;};
 
--(NSString *)hundredFreeConversion
-{
+-(double)hundredFreeConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+1.6;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
 
--(NSString *)twoHundredFreeConversion
-{
+-(double)twoHundredFreeConversion{
+    doubleMinutes = [self.minutes.text doubleValue];
+    doubleSeconds = [self.seconds.text doubleValue]/60;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/100;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+
     convertedTime=fullTime*1.11+3.2;
-    convert=@"%d",convertedTime;        //This conversion can only be done within a method
-    return convert;
+    return convertedTime;
 };
 
 
