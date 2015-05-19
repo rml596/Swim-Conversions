@@ -40,7 +40,7 @@ int convertedMiliseconds;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _pickerData = @[@[@"50",@"100",@"200",@"NA"],@[@"Fly", @"Free",@"Back",@"Breast"]];
+    _pickerData = @[@[@"50",@"100",@"200",@"NA"],@[@"Fly",@"Back",@"Breast",@"Free"]];
     /*[@"50 Free",@"100 Free", @"200 Free", @"100 Fly", @"200 Fly", @"100 Back", @"200 Back",@"100 Breast", @"200 Breast"];*/
     
     self.strokePicker.dataSource=self;
