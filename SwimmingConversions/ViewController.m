@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "WebViewController.h"
 #import <Social/Social.h>
 
 @interface ViewController ()
@@ -300,9 +301,19 @@ double convertedTime;
     return convertedTime;
 };
 
+///////////This was the method needed to properly configure the webView//////////////////////
 
 
-
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showWebView"])
+    {
+        NSString *url = @"http://www.swimswam.com/news/";
+        WebViewController *webVC = [segue destinationViewController];
+        webVC.urlString = url; 
+    
+    }
+}
 
 @end
 

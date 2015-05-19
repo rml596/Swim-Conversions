@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface WebViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+//@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) NSString *urlString; 
 
 
 @end

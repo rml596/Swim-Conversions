@@ -7,6 +7,7 @@
 //
 
 #import "WebViewController.h"
+#import "ViewController.h"
 
 @interface WebViewController ()
 
@@ -17,7 +18,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadWebRequest];
+    
+    NSURL *urlAddress = [NSURL URLWithString:_urlString];
+    
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:urlAddress];
+    
+    [_webView loadRequest:requestObj];
+    
+    
   
 }
 
@@ -27,17 +35,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 -(void) loadWebRequest
 {
-    NSString *fullURL = @"www.swimswam.com/news/";
     
-    NSURL *url = [NSURL URLWithString:fullURL];
+    NSURL *urlAddress = [NSURL URLWithString:_urlString];
     
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:urlAddress];
     
     [_webView loadRequest:requestObj];
 }
+///////////////////// delegate methods for activityIndicator
 
+/*
 
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -57,7 +68,7 @@
     [self.activityIndicator stopAnimating];
     NSLog(@"Whoops");
 }
-
+*/
 
 
 /*
