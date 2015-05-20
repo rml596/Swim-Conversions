@@ -203,8 +203,9 @@ int convertedMiliseconds;
     convertedTime=(fullTime*1.11+.7);
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+.7)*10;
     
-    convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
+    convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,convertedMiliseconds];
     return convert;
 };
 -(NSString *)hundredFlyConversion{
@@ -217,6 +218,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+1.4;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+1.4)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -227,9 +229,10 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text intValue];
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=fullTime*1.11+.7;
+    convertedTime=fullTime*1.11+2.8;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+2.8)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -243,6 +246,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+.6;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+.6)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -256,6 +260,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+1.2;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+1.2)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -269,6 +274,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+2.4;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+2.4)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -282,6 +288,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+1;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+1)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -295,6 +302,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+2;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+2)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -308,6 +316,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+3.2;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+3.2)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -322,6 +331,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+.8;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+.8)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -335,6 +345,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+1.6;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+1.6)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
@@ -349,6 +360,7 @@ int convertedMiliseconds;
     convertedTime=fullTime*1.11+3.2;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=(int)convertedTime%60;
+    convertedMiliseconds=(doubleMiliseconds*1.11+3.2)*10;
     
     convert=[NSString stringWithFormat:@"%d:%d.%d",convertedMinutes,convertedSeconds,doubleMiliseconds];
     return convert;
