@@ -9,19 +9,22 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)segmentedAction:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UITextField *minutes;
 @property (strong, nonatomic) IBOutlet UITextField *seconds;
 @property (strong, nonatomic) IBOutlet UITextField *miliseconds;
-@property (strong, nonatomic) IBOutlet UIButton *convertButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *strokePicker;
 
+- (IBAction)convert:(id)sender;
 
 
 -  (IBAction)dismissKeyboard:(id)sender;
 - (IBAction)tweet:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UILabel *output;
+@property (strong, nonatomic) IBOutlet UILabel *output1;
+@property (strong, nonatomic) IBOutlet UILabel *output2;
 
 @end
 
