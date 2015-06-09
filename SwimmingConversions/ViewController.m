@@ -126,6 +126,7 @@ int convertedMiliseconds;
     }
 }
 
+
 - (IBAction)convert:(id)sender{
     //based on input selects what formula to use
     if (segmentedValue==0) {
