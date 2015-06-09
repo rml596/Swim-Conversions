@@ -765,8 +765,10 @@ int convertedMiliseconds;
     convertedSeconds=convertedTime-(convertedMinutes*60);
     convertedMiliseconds=(doubleMiliseconds*1.11);
     
-    //convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)twoHundredFlyConversionSCYtoSCM{
