@@ -86,6 +86,7 @@
                                 </state>
                                 <connections>
                                     <action selector="convert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UgB-88-yzc"/>
+                                    <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fha-Fs-ina"/>
                                 </connections>
                             </button>
                         </subviews>
