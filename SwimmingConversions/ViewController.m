@@ -39,6 +39,17 @@ int convertedMiliseconds;
 
 
 - (void)viewDidLoad{
+    /*
+    //adds "done" to keyboard to dismiss it
+    UIToolbar* toolbar = [UIToolbar new];
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissKeyboard:)];
+    id space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL];
+    toolbar.items = @[space, doneButton];
+    
+    self.minutes.inputAccessoryView = toolbar;
+    self.seconds.inputAccessoryView = toolbar;
+    self.miliseconds.inputAccessoryView = toolbar;
+    */
     [super viewDidLoad];
 
     
