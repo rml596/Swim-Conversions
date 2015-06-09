@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ColoradoConversionViewController.h
 //  SwimmingConversions
 //
 //  Created by Robert Lynch on 4/15/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ColoradoConversionViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentedAction:(id)sender;
 
