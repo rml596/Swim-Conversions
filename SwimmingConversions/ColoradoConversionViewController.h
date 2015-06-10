@@ -11,10 +11,6 @@
 @interface ColoradoConversionViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UISegmentedControl *courseSegmentedControl;
 - (IBAction)courseSegmentedAction:(id)sender;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
-- (IBAction)typeSegmentedAction:(id)sender;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *genderSegmentedControl;
-- (IBAction)genderSegmentedAction:(id)sender;
 
 
 @property (strong, nonatomic) IBOutlet UITextField *minutes;

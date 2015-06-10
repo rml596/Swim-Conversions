@@ -25,8 +25,6 @@ NSString *convertSCY;
 NSString *convertSCM;
 NSString *convertLCM;
 int segmentedCourseValue;
-int segmentedTypeValue;
-int segmentedGenderValue;
 
 
 int distance;
@@ -163,11 +161,10 @@ double convertedSeconds;
         self.output2.text=@"";
     }
     //based on the SegmentedView, a diffrent formula is selected to run
-    else if (segmentedTypeValue==0){
         //if selected USA
-        if (segmentedCourseValue==0) {
-            //SCY is Selected (and entered)
-            if (distance==0) {
+    if (segmentedCourseValue==0) {
+        //SCY is Selected (and entered)
+        if (distance==0) {
                 //50s
                 if(strokeType==0){
                     //fly
@@ -203,511 +200,507 @@ double convertedSeconds;
                     self.output2.text=@"";
                 }
             }
-            else if (distance==1) {
-                //100s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoHundredFlyConversionSCYtoSCM];
-                    [self coloradoHundredFlyConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==1){
+        else if (distance==1) {
+            //100s
+            if(strokeType==0){
+                //fly
+                [self coloradoHundredFlyConversionSCYtoSCM];
+                [self coloradoHundredFlyConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==1){
                 //back
-                    [self coloradoHundredBackConversionSCYtoSCM];
-                    [self coloradoHundredBackConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoHundredBreastConversionSCYtoSCM];
-                    [self coloradoHundredBreastConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoHundredFreeConversionSCYtoSCM];
-                    [self coloradoHundredFreeConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoHundredIMConversionSCYtoSCM];
-                    [self coloradoHundredIMConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
+                [self coloradoHundredBackConversionSCYtoSCM];
+                [self coloradoHundredBackConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==2){
-                //200s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoTwoHundredFlyConversionSCYtoSCM];
-                    [self coloradoTwoHundredFlyConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoTwoHundredBackConversionSCYtoSCM];
-                    [self coloradoTwoHundredBackConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoTwoHundredBreastConversionSCYtoSCM];
-                    [self coloradoTwoHundredBreastConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoTwoHundredFreeConversionSCYtoSCM];
-                    [self coloradoTwoHundredFreeConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoTwoHundredIMConversionSCYtoSCM];
-                    [self coloradoTwoHundredIMConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==2){
+                //breast
+                [self coloradoHundredBreastConversionSCYtoSCM];
+                [self coloradoHundredBreastConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==3){
-                //400s
-                if(strokeType==0){
-                    //fly
-                    self.output1.text=@"There is no 400 Fly";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==1){
-                    //back
-                    self.output1.text=@"There is no 400 Back";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==2){
-                    //breast
-                    self.output1.text=@"There is no 400 Breast";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoFiveHundredFreeConversionSCYtoSCM];
-                    [self coloradoFiveHundredFreeConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoFourHundredIMConversionSCYtoSCM];
-                    [self coloradoFourHundredIMConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==3){
+                //free
+                [self coloradoHundredFreeConversionSCYtoSCM];
+                [self coloradoHundredFreeConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==4){
-                //500s
-                if(strokeType==0){
-                    //fly
-                    self.output1.text=@"There is no 500 Fly";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==1){
-                    //back
-                    self.output1.text=@"There is no 500 Back";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==2){
-                    //breast
-                    self.output1.text=@"There is no 500 Breast";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoFiveHundredFreeConversionSCYtoSCM];
-                    [self coloradoFiveHundredFreeConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoFourHundredIMConversionSCYtoSCM];
-                    [self coloradoFourHundredIMConversionSCYtoLCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==4){
+                //IM
+                [self coloradoHundredIMConversionSCYtoSCM];
+                [self coloradoHundredIMConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
         }
-        else if (segmentedCourseValue==1){
-            //SCM is selected (and entered)
-            if (distance==0) {
-                //50s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFiftyFlyConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFiftyBackConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFiftyBreastConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFiftyFreeConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    self.output1.text=@"There is no 50 I.M.";
-                    self.output2.text=@"";
-                }
+        else if (distance==2){
+            //200s
+            if(strokeType==0){
+                //fly
+                [self coloradoTwoHundredFlyConversionSCYtoSCM];
+                [self coloradoTwoHundredFlyConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==1) {
-                //100s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoConversionSCMtoSCY];
-                    [self hundredFlyConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoHundredBackConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoHundredBreastConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoHundredFreeConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoHundredIMConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==1){
+                //back
+                [self coloradoTwoHundredBackConversionSCYtoSCM];
+                [self coloradoTwoHundredBackConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==2){
-                //200s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoTwoHundredFlyConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoTwoHundredBackConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoTwoHundredBreastConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoTwoHundredFreeConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoTwoHundredIMConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==2){
+                //breast
+                [self coloradoTwoHundredBreastConversionSCYtoSCM];
+                [self coloradoTwoHundredBreastConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==3){
-                //400s
-                if(strokeType==0){
-                    //fly
-                    self.output1.text=@"There is no 400 Fly";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==1){
-                    //back
-                    self.output1.text=@"There is no 400 Back";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==2){
-                    //breast
-                    self.output1.text=@"There is no 400 Breast";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFourHundredFreeConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFourHundredIMConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==3){
+                //free
+                [self coloradoTwoHundredFreeConversionSCYtoSCM];
+                [self coloradoTwoHundredFreeConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
-            else if (distance==4){
-                //500s
-                if(strokeType==0){
-                    //fly
-                    self.output1.text=@"There is no 500 Fly";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==1){
-                    //back
-                    self.output1.text=@"There is no 500 Back";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==2){
-                    //breast
-                    self.output1.text=@"There is no 500 Breast";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFourHundredFreeConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoConversionSCMtoSCY];
-                    [self coloradoFourHundredIMConversionSCMtoLCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertLCM;
-                }
+            else if (strokeType==4){
+                //IM
+                [self coloradoTwoHundredIMConversionSCYtoSCM];
+                [self coloradoTwoHundredIMConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
         }
-        else if (segmentedCourseValue==2){
-            //if LCM is selected (and entered)
-            if (distance==0) {
-                //50s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoFiftyFlyConversionLCMtoSCY];
-                    [self coloradoFiftyFlyConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoFiftyBackConversionLCMtoSCY];
-                    [self coloradoFiftyBackConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoFiftyBreastConversionLCMtoSCY];
-                    [self coloradoFiftyBreastConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoFiftyFreeConversionLCMtoSCY];
-                    [self coloradoFiftyFreeConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    self.output1.text=@"There is no 50 I.M.";
-                    self.output2.text=@"";
-                }
-            }
-            else if (distance==1) {
-                //100s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoHundredFlyConversionLCMtoSCY];
-                    [self coloradoHundredFlyConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoHundredBackConversionLCMtoSCY];
-                    [self coloradoHundredBackConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoHundredBreastConversionLCMtoSCY];
-                    [self coloradoHundredBreastConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoHundredFreeConversionLCMtoSCY];
-                    [self coloradoHundredFreeConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoHundredIMConversionLCMtoSCY];
-                    [self coloradoHundredIMConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-            }
-            else if (distance==2){
-                //200s
-                if(strokeType==0){
-                    //fly
-                    [self coloradoTwoHundredFlyConversionLCMtoSCY];
-                    [self coloradoTwoHundredFlyConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==1){
-                    //back
-                    [self coloradoTwoHundredBackConversionLCMtoSCY];
-                    [self coloradoTwoHundredBackConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==2){
-                    //breast
-                    [self coloradoTwoHundredBreastConversionLCMtoSCY];
-                    [self coloradoTwoHundredBreastConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoTwoHundredFreeConversionLCMtoSCY];
-                    [self coloradoTwoHundredFreeConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoTwoHundredIMConversionLCMtoSCY];
-                    [self coloradoTwoHundredIMConversionLCMtoSCM];
-                    self.output1.text=convertSCY;
-                    self.output2.text=convertSCM;
-                }
-            }
-            else if (distance==3){
+        else if (distance==3){
             //400s
-                if(strokeType==0){
-                    //fly
-                    self.output1.text=@"There is no 400 Fly";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==1){
-                    //back
-                    self.output1.text=@"There is no 400 Back";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==2){
-                    //breast
-                    self.output1.text=@"There is no 400 Breast";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoFiveHundredFreeConversionLCMtoSCY];
-                    [self coloradoFourHundredFreeConversionLCMtoSCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoFourHundredIMConversionLCMtoSCY];
-                    [self coloradoFourHundredIMConversionLCMtoSCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertSCM;
-                }
+            if(strokeType==0){
+                //fly
+                self.output1.text=@"There is no 400 Fly";
+                self.output2.text=@"";
             }
-            else if (distance==4){
-                //500s
-                if(strokeType==0){
-                    //fly
-                    self.output1.text=@"There is no 500 Fly";
-                    self.output2.text=@"";
+            else if (strokeType==1){
+                //back
+                self.output1.text=@"There is no 400 Back";
+                self.output2.text=@"";
+            }
+            else if (strokeType==2){
+                //breast
+                self.output1.text=@"There is no 400 Breast";
+                self.output2.text=@"";
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoFiveHundredFreeConversionSCYtoSCM];
+                [self coloradoFiveHundredFreeConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoFourHundredIMConversionSCYtoSCM];
+                [self coloradoFourHundredIMConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
+            }
+        }
+        else if (distance==4){
+            //500s
+            if(strokeType==0){
+                //fly
+                self.output1.text=@"There is no 500 Fly";
+                self.output2.text=@"";
+            }
+            else if (strokeType==1){
+                //back
+                self.output1.text=@"There is no 500 Back";
+                self.output2.text=@"";
                 }
-                else if (strokeType==1){
-                    //back
-                    self.output1.text=@"There is no 500 Back";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==2){
-                    //breast
-                    self.output1.text=@"There is no 500 Breast";
-                    self.output2.text=@"";
-                }
-                else if (strokeType==3){
-                    //free
-                    [self coloradoFiveHundredFreeConversionLCMtoSCY];
-                    [self coloradoFourHundredFreeConversionLCMtoSCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertSCM;
-                }
-                else if (strokeType==4){
-                    //IM
-                    [self coloradoFourHundredIMConversionLCMtoSCY];
-                    [self coloradoFourHundredIMConversionLCMtoSCM];
-                    self.output1.text=convertSCM;
-                    self.output2.text=convertSCM;
-                }
+            else if (strokeType==2){
+                //breast
+                self.output1.text=@"There is no 500 Breast";
+                self.output2.text=@"";
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoFiveHundredFreeConversionSCYtoSCM];
+                [self coloradoFiveHundredFreeConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoFourHundredIMConversionSCYtoSCM];
+                [self coloradoFourHundredIMConversionSCYtoLCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertLCM;
             }
         }
     }
-    else if(segmentedTypeValue==1){
-        //if NISCA is selected
-        
+    else if (segmentedCourseValue==1){
+        //SCM is selected (and entered)
+        if (distance==0) {
+            //50s
+            if(strokeType==0){
+                //fly
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFiftyFlyConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==1){
+                //back
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFiftyBackConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==2){
+                //breast
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFiftyBreastConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFiftyFreeConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                self.output1.text=@"There is no 50 I.M.";
+                self.output2.text=@"";
+            }
+        }
+        else if (distance==1) {
+            //100s
+            if(strokeType==0){
+                //fly
+                [self coloradoConversionSCMtoSCY];
+                [self hundredFlyConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==1){
+                //back
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoHundredBackConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==2){
+                //breast
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoHundredBreastConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoHundredFreeConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoHundredIMConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+        }
+        else if (distance==2){
+            //200s
+            if(strokeType==0){
+                //fly
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoTwoHundredFlyConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==1){
+                //back
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoTwoHundredBackConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==2){
+                //breast
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoTwoHundredBreastConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+                else if (strokeType==3){
+                //free
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoTwoHundredFreeConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoTwoHundredIMConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+        }
+        else if (distance==3){
+            //400s
+            if(strokeType==0){
+                //fly
+                self.output1.text=@"There is no 400 Fly";
+                self.output2.text=@"";
+            }
+            else if (strokeType==1){
+                //back
+                self.output1.text=@"There is no 400 Back";
+                self.output2.text=@"";
+            }
+            else if (strokeType==2){
+                //breast
+                self.output1.text=@"There is no 400 Breast";
+                self.output2.text=@"";
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFourHundredFreeConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFourHundredIMConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+        }
+        else if (distance==4){
+            //500s
+            if(strokeType==0){
+                //fly
+                self.output1.text=@"There is no 500 Fly";
+                self.output2.text=@"";
+                }
+            else if (strokeType==1){
+                //back
+            self.output1.text=@"There is no 500 Back";
+                self.output2.text=@"";
+            }
+            else if (strokeType==2){
+                //breast
+                self.output1.text=@"There is no 500 Breast";
+                self.output2.text=@"";
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFourHundredFreeConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoConversionSCMtoSCY];
+                [self coloradoFourHundredIMConversionSCMtoLCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertLCM;
+            }
+        }
+    }
+    else if (segmentedCourseValue==2){
+        //if LCM is selected (and entered)
+        if (distance==0) {
+            //50s
+            if(strokeType==0){
+                //fly
+                [self coloradoFiftyFlyConversionLCMtoSCY];
+                [self coloradoFiftyFlyConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==1){
+                //back
+                [self coloradoFiftyBackConversionLCMtoSCY];
+                [self coloradoFiftyBackConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==2){
+                //breast
+                [self coloradoFiftyBreastConversionLCMtoSCY];
+                [self coloradoFiftyBreastConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoFiftyFreeConversionLCMtoSCY];
+                [self coloradoFiftyFreeConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==4){
+                //IM
+                self.output1.text=@"There is no 50 I.M.";
+                self.output2.text=@"";
+            }
+        }
+        else if (distance==1) {
+            //100s
+            if(strokeType==0){
+                //fly
+                [self coloradoHundredFlyConversionLCMtoSCY];
+                [self coloradoHundredFlyConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==1){
+                //back
+                [self coloradoHundredBackConversionLCMtoSCY];
+                [self coloradoHundredBackConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==2){
+                //breast
+                [self coloradoHundredBreastConversionLCMtoSCY];
+                [self coloradoHundredBreastConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoHundredFreeConversionLCMtoSCY];
+                [self coloradoHundredFreeConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoHundredIMConversionLCMtoSCY];
+                [self coloradoHundredIMConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+        }
+        else if (distance==2){
+            //200s
+            if(strokeType==0){
+                //fly
+                [self coloradoTwoHundredFlyConversionLCMtoSCY];
+                [self coloradoTwoHundredFlyConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==1){
+                //back
+                [self coloradoTwoHundredBackConversionLCMtoSCY];
+                [self coloradoTwoHundredBackConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==2){
+                //breast
+                [self coloradoTwoHundredBreastConversionLCMtoSCY];
+                [self coloradoTwoHundredBreastConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoTwoHundredFreeConversionLCMtoSCY];
+                [self coloradoTwoHundredFreeConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoTwoHundredIMConversionLCMtoSCY];
+                [self coloradoTwoHundredIMConversionLCMtoSCM];
+                self.output1.text=convertSCY;
+                self.output2.text=convertSCM;
+            }
+        }
+        else if (distance==3){
+        //400s
+            if(strokeType==0){
+                //fly
+                self.output1.text=@"There is no 400 Fly";
+                self.output2.text=@"";
+                }
+            else if (strokeType==1){
+                //back
+                self.output1.text=@"There is no 400 Back";
+                self.output2.text=@"";
+            }
+            else if (strokeType==2){
+                //breast
+                self.output1.text=@"There is no 400 Breast";
+                self.output2.text=@"";
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoFiveHundredFreeConversionLCMtoSCY];
+                [self coloradoFourHundredFreeConversionLCMtoSCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoFourHundredIMConversionLCMtoSCY];
+                [self coloradoFourHundredIMConversionLCMtoSCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertSCM;
+            }
+        }
+        else if (distance==4){
+            //500s
+            if(strokeType==0){
+                //fly
+                self.output1.text=@"There is no 500 Fly";
+                self.output2.text=@"";
+            }
+            else if (strokeType==1){
+                //back
+                self.output1.text=@"There is no 500 Back";
+                self.output2.text=@"";
+            }
+            else if (strokeType==2){
+                //breast
+                self.output1.text=@"There is no 500 Breast";
+                self.output2.text=@"";
+            }
+            else if (strokeType==3){
+                //free
+                [self coloradoFiveHundredFreeConversionLCMtoSCY];
+                [self coloradoFourHundredFreeConversionLCMtoSCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertSCM;
+            }
+            else if (strokeType==4){
+                //IM
+                [self coloradoFourHundredIMConversionLCMtoSCY];
+                [self coloradoFourHundredIMConversionLCMtoSCM];
+                self.output1.text=convertSCM;
+                self.output2.text=convertSCM;
+            }
+        }
     }
 }
+
 
 
 -(IBAction)dismissKeyboard:(id)sender{
@@ -727,23 +720,6 @@ double convertedSeconds;
     else if (_courseSegmentedControl.selectedSegmentIndex==2){
         //if selected on LCM
         segmentedCourseValue=2;
-    }
-}
-- (IBAction)typeSegmentedAction:(id)sender {
-    //based on what the user enters, runs USA conversions or NISCA
-    if (_typeSegmentedControl.selectedSegmentIndex==0) {
-        segmentedTypeValue=0;
-    }
-    else if (_typeSegmentedControl.selectedSegmentIndex==1){
-        segmentedTypeValue=1;
-    }
-}
-- (IBAction)genderSegmentedAction:(id)sender {
-    if (_genderSegmentedControl.selectedSegmentIndex==0) {
-        segmentedGenderValue=0;
-    }
-    else if (_genderSegmentedControl.selectedSegmentIndex==1){
-        segmentedGenderValue=1;
     }
 }
 
