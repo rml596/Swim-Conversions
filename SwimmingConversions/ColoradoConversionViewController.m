@@ -36,14 +36,7 @@ int convertedMinutes;
 double convertedSeconds;
 
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-        self.title=NSLocalizedString(@"USA Swimming", @"USA Swimming");
-        self.tabBarItem.image=[UIImage imageNamed:@"first"];
-    }
-    return self;
-}
+
 - (void)viewDidLoad{
     /*
     //adds "done" to keyboard to dismiss it
