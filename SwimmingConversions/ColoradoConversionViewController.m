@@ -34,7 +34,6 @@ double convertedTime;
 
 int convertedMinutes;
 double convertedSeconds;
-int convertedMiliseconds;
 
 
 
@@ -469,7 +468,7 @@ int convertedMiliseconds;
             else if (strokeType==3){
                 //free
                 [self conversionSCMtoSCY];
-                [self fiveHundredFreeConversionSCMtoLCM];
+                [self fourHundredFreeConversionSCMtoLCM];
                 self.output1.text=convertSCY;
                 self.output2.text=convertLCM;
             }
@@ -501,7 +500,7 @@ int convertedMiliseconds;
             else if (strokeType==3){
                 //free
                 [self conversionSCMtoSCY];
-                [self fiveHundredFreeConversionSCMtoLCM];
+                [self fourHundredFreeConversionSCMtoLCM];
                 self.output1.text=convertSCY;
                 self.output2.text=convertLCM;
             }
@@ -747,23 +746,24 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)hundredFlyConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
-    doubleMiliseconds = [self.miliseconds.text doubleValue];
-    fullTime=doubleMinutes+doubleSeconds;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
+    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
     
     convertedTime=fullTime*1.11;
     convertedMinutes=(int)convertedTime/60;
     convertedSeconds=convertedTime-(convertedMinutes*60);
-    convertedMiliseconds=(doubleMiliseconds*1.11);
     
     if (convertedSeconds<10)
         convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
@@ -774,29 +774,34 @@ int convertedMiliseconds;
 -(NSString *)twoHundredFlyConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
-    doubleMiliseconds = [self.miliseconds.text doubleValue];
-    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+    doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
+    fullTime=doubleMinutes+doubleSeconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)fiftyBackConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
-    fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
+    fullTime=doubleMinutes+doubleSeconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)hundredBackConversionSCYtoSCM{
@@ -807,10 +812,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)twoHundredBackConversionSCYtoSCM{
@@ -821,10 +829,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString*)fiftyBreastConversionSCYtoSCM{
@@ -835,10 +846,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString*)hundredBreastConversionSCYtoSCM{
@@ -849,10 +862,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString*)twoHundredBreastConversionSCYtoSCM{
@@ -863,10 +879,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString*)fiftyFreeConversionSCYtoSCM{
@@ -878,10 +896,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 }
 -(NSString *)hundredFreeConversionSCYtoSCM{
@@ -892,10 +912,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)twoHundredFreeConversionSCYtoSCM{
@@ -906,10 +928,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
+
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)fiveHundredFreeConversionSCYtoSCM{
@@ -920,10 +945,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*.8925)-6.4;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*.8925-6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
 -(NSString *)hundredIMConversionSCYtoSCM{
@@ -934,10 +961,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
     
 };
@@ -949,10 +978,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 
 };
@@ -964,15 +995,14 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 }
-
-
-
 
 
 //Conversion Formulas/Methods SCY-LCM
@@ -984,10 +1014,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11+.7);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+.7)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)hundredFlyConversionSCYtoLCM{
@@ -999,10 +1031,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+1.4;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+1.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)twoHundredFlyConversionSCYtoLCM{
@@ -1013,10 +1048,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+2.8;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+2.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)fiftyBackConversionSCYtoLCM{
@@ -1027,10 +1065,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+.6;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)hundredBackConversionSCYtoLCM{
@@ -1041,10 +1082,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+1.2;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+1.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)twoHundredBackConversionSCYtoLCM{
@@ -1055,10 +1099,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+2.4;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+2.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)fiftyBreastConversionSCYtoLCM{
@@ -1069,10 +1116,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+1;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+1)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)hundredBreastConversionSCYtoLCM{
@@ -1083,10 +1133,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+2;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)twoHundredBreastConversionSCYtoLCM{
@@ -1097,10 +1150,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+3.2;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)fiftyFreeConversionSCYtoLCM{
@@ -1112,10 +1168,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+.8;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
 
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
 -(NSString *)hundredFreeConversionSCYtoLCM{
@@ -1126,10 +1185,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+1.6;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+1.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)twoHundredFreeConversionSCYtoLCM{
@@ -1140,10 +1202,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime*1.11+3.2;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)fiveHundredFreeConversionSCYtoLCM{
@@ -1154,10 +1219,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*.8925);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*.8925)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
 -(NSString *)hundredIMConversionSCYtoLCM{
@@ -1168,10 +1236,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11)+1.6;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+1.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
 -(NSString *)twoHundredIMConversionSCYtoLCM{
@@ -1182,10 +1253,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11)+3.2;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
     
 };
@@ -1197,16 +1271,15 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime*1.11)+6.4;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11+6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
-
-
-
-
 
 
 //Conversion Formulas/Methods SCM-SCY
@@ -1218,15 +1291,14 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime/1.11);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds/1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
-
-
-
 
 
 //Conversion Formula/Methods SCM-LCM
@@ -1238,10 +1310,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+.7);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.7)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)hundredFlyConversionSCMtoLCM{
@@ -1253,10 +1328,13 @@ int convertedMiliseconds;
     
     convertedTime=fullTime+1.4;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)twoHundredFlyConversionSCMtoLCM{
@@ -1267,10 +1345,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+2.8);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)fiftyBackConversionSCMtoLCM{
@@ -1281,10 +1362,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+.6);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)hundredBackConversionSCMtoLCM{
@@ -1295,10 +1379,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+1.2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)twoHundredBackConversionSCMtoLCM{
@@ -1309,10 +1396,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+2.4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)fiftyBreastConversionSCMtoLCM{
@@ -1323,10 +1413,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+1);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)hundredBreastConversionSCMtoLCM{
@@ -1337,10 +1430,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)twoHundredBreastConversionSCMtoLCM{
@@ -1351,10 +1447,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString*)fiftyFreeConversionSCMtoLCM{
@@ -1366,10 +1465,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+.8);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
 -(NSString *)hundredFreeConversionSCMtoLCM{
@@ -1380,10 +1482,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+1.6);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)twoHundredFreeConversionSCMtoLCM{
@@ -1394,24 +1499,30 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+3.2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)fiveHundredFreeConversionSCMtoLCM{
+-(NSString *)fourHundredFreeConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime*.8925)-6.4;
+    convertedTime=(fullTime+6.4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
 -(NSString *)hundredIMConversionSCMtoLCM{
@@ -1422,10 +1533,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+1.6);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
     
 };
@@ -1437,10 +1550,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+3.2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
     
 };
@@ -1452,15 +1567,14 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+6.4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"LCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
-
-
-
 
 
 //Conversion Formulas/Methods LCM-SCM
@@ -1470,13 +1584,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+.7);
+    convertedTime=(fullTime-.7);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.7)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)hundredFlyConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1485,13 +1601,15 @@ int convertedMiliseconds;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
     
-    convertedTime=fullTime+1.4;
+    convertedTime=fullTime-1.4;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)twoHundredFlyConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1499,13 +1617,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue];
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+2.8);
+    convertedTime=(fullTime-2.8);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)fiftyBackConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1513,13 +1633,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+.6);
+    convertedTime=(fullTime-.6);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)hundredBackConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1527,13 +1649,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1.2);
+    convertedTime=(fullTime-1.2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)twoHundredBackConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1541,13 +1665,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+2.4);
+    convertedTime=(fullTime-2.4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString*)fiftyBreastConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1555,13 +1681,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1);
+    convertedTime=(fullTime-1);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString*)hundredBreastConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1569,13 +1697,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+2);
+    convertedTime=(fullTime-2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString*)twoHundredBreastConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1583,13 +1713,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+4);
+    convertedTime=(fullTime-4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString*)fiftyFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1598,13 +1730,15 @@ int convertedMiliseconds;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
     
-    convertedTime=(fullTime+.8);
+    convertedTime=(fullTime-.8);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+   if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 }
 -(NSString *)hundredFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1612,13 +1746,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1.6);
+    convertedTime=(fullTime-1.6);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)twoHundredFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1626,13 +1762,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+3.2);
+    convertedTime=(fullTime-3.2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)fourHundredFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1642,11 +1780,13 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime-6.4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds-6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 };
 -(NSString *)hundredIMConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
@@ -1654,13 +1794,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1.6);
+    convertedTime=(fullTime-1.6);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
     
 };
 -(NSString *)twoHundredIMConversionLCMtoSCM{
@@ -1669,13 +1811,15 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+3.2);
+    convertedTime=(fullTime-3.2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
     
 };
 -(NSString *)fourHundredIMConversionLCMtoSCM{
@@ -1684,16 +1828,16 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+6.4);
+    convertedTime=(fullTime-6.4);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertLCM=[NSString stringWithFormat:@"SCM= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
-    return convertLCM;
+    if (convertedSeconds<10)
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
+    return convertSCM;
 }
-
-
 
 
 //Conversion Formulas/Methods LCM-SCY
@@ -1703,12 +1847,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+.7);
+    convertedTime=(fullTime-.7)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.7)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)hundredFlyConversionLCMtoSCY{
@@ -1718,12 +1864,14 @@ int convertedMiliseconds;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
     
-    convertedTime=fullTime+1.4;
+    convertedTime=(fullTime-1.4)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)twoHundredFlyConversionLCMtoSCY{
@@ -1732,12 +1880,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue];
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+2.8);
+    convertedTime=(fullTime-2.8)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)fiftyBackConversionLCMtoSCY{
@@ -1746,12 +1896,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+.6);
+    convertedTime=(fullTime-.6)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)hundredBackConversionLCMtoSCY{
@@ -1760,12 +1912,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1.2);
+    convertedTime=(fullTime-1.2)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)twoHundredBackConversionLCMtoSCY{
@@ -1774,12 +1928,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+2.4);
+    convertedTime=(fullTime-2.4)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString*)fiftyBreastConversionLCMtoSCY{
@@ -1788,12 +1944,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1);
+    convertedTime=(fullTime-1)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString*)hundredBreastConversionLCMtoSCY{
@@ -1804,10 +1962,12 @@ int convertedMiliseconds;
     
     convertedTime=(fullTime+2);
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString*)twoHundredBreastConversionLCMtoSCY{
@@ -1816,12 +1976,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+4);
+    convertedTime=(fullTime-4)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString*)fiftyFreeConversionLCMtoSCY{
@@ -1831,12 +1993,14 @@ int convertedMiliseconds;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
     
-    convertedTime=(fullTime+.8);
+    convertedTime=(fullTime-.8)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+.8)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 }
 -(NSString *)hundredFreeConversionLCMtoSCY{
@@ -1845,12 +2009,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1.6);
+    convertedTime=(fullTime-1.6)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds*1.11)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)twoHundredFreeConversionLCMtoSCY{
@@ -1859,12 +2025,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+3.2);
+    convertedTime=(fullTime-3.2)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)fiveHundredFreeConversionLCMtoSCY{
@@ -1873,12 +2041,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime*.8925)-6.4;
+    convertedTime=(fullTime-6.4)/.8925;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
 -(NSString *)hundredIMConversionLCMtoSCY{
@@ -1887,12 +2057,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+1.6);
+    convertedTime=(fullTime-1.6)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+1.6)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
     
 };
@@ -1902,12 +2074,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+3.2);
+    convertedTime=(fullTime-3.2)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+3.2)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
     
 };
@@ -1917,12 +2091,14 @@ int convertedMiliseconds;
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
     fullTime=doubleMinutes+doubleSeconds+doubleMiliseconds;
     
-    convertedTime=(fullTime+6.4);
+    convertedTime=(fullTime-6.4)/1.11;
     convertedMinutes=(int)convertedTime/60;
-    convertedSeconds=(int)convertedTime%60;
-    convertedMiliseconds=(doubleMiliseconds+6.4)*10;
+    convertedSeconds=convertedTime-(convertedMinutes*60);
     
-    convertSCY=[NSString stringWithFormat:@"SCY= %d:%02d.%02d",convertedMinutes,convertedSeconds,convertedMiliseconds];
+    if (convertedSeconds<10)
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:0%.2f",convertedMinutes,convertedSeconds];
+    else
+        convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 }
 

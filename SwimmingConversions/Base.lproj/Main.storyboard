@@ -34,7 +34,7 @@
                                     <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="3ee-lz-bD2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minutes" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2gY-8E-XpX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minutes" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2gY-8E-XpX">
                                 <rect key="frame" x="16" y="240" width="84" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
@@ -90,7 +90,7 @@
                                                 </state>
                                             </button>
                                             <connections>
-                                                <segue destination="HAp-Bf-PDM" kind="modal" id="3hx-aW-x9U"/>
+                                                <segue destination="HAp-Bf-PDM" kind="modal" id="hnS-D5-gcA"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -104,7 +104,7 @@
                                     <tabBarItem systemItem="more" id="2Af-76-MrW"/>
                                 </items>
                             </tabBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-Wb-vN3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-Wb-vN3">
                                 <rect key="frame" x="113" y="240" width="95" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
@@ -128,22 +128,22 @@
                             <constraint firstItem="TCh-f6-U1H" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-7" id="IDY-MM-qhO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8bL-gM-kzI" secondAttribute="trailing" constant="43" id="IjU-Hw-ifA"/>
                             <constraint firstItem="NX7-Q6-PcW" firstAttribute="top" secondItem="9BK-y4-ung" secondAttribute="bottom" id="KcT-Ft-QQS"/>
-                            <constraint firstItem="8bL-gM-kzI" firstAttribute="top" secondItem="oF6-Rc-g7v" secondAttribute="bottom" constant="8" id="LM4-OJ-QNH"/>
                             <constraint firstItem="479-Uc-hK9" firstAttribute="top" secondItem="Ale-A0-Dh2" secondAttribute="bottom" constant="12" id="RJ8-vU-Jx7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9BK-y4-ung" secondAttribute="trailing" constant="-16" id="Twt-4o-bZt"/>
                             <constraint firstItem="9BK-y4-ung" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="UDG-p2-D3b"/>
                             <constraint firstItem="cwU-Wb-vN3" firstAttribute="baseline" secondItem="2gY-8E-XpX" secondAttribute="baseline" id="XVi-OP-gvM"/>
                             <constraint firstItem="2gY-8E-XpX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Z5x-Qk-UZg"/>
                             <constraint firstItem="479-Uc-hK9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="25" id="ZG3-4e-zGr"/>
-                            <constraint firstItem="cwU-Wb-vN3" firstAttribute="centerX" secondItem="oF6-Rc-g7v" secondAttribute="centerX" id="ZHd-D8-Vl2"/>
                             <constraint firstItem="8bL-gM-kzI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="43" id="ade-pn-7G1"/>
                             <constraint firstItem="Ale-A0-Dh2" firstAttribute="top" secondItem="wEr-D0-25S" secondAttribute="bottom" id="bCi-6q-4w8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oF6-Rc-g7v" secondAttribute="trailing" constant="84" id="fCB-C5-tjB"/>
+                            <constraint firstItem="oF6-Rc-g7v" firstAttribute="top" secondItem="cwU-Wb-vN3" secondAttribute="bottom" constant="8" id="fZ0-g3-kUR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="479-Uc-hK9" secondAttribute="trailing" constant="25" id="iDd-7Q-iAc"/>
                             <constraint firstItem="TCh-f6-U1H" firstAttribute="top" secondItem="479-Uc-hK9" secondAttribute="bottom" constant="21" id="iUT-ah-bdp"/>
                             <constraint firstItem="Ale-A0-Dh2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="k5a-JI-fF8"/>
+                            <constraint firstItem="oF6-Rc-g7v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="85" id="kst-3Z-7M9"/>
                             <constraint firstItem="b7m-UJ-EPF" firstAttribute="top" secondItem="TCh-f6-U1H" secondAttribute="bottom" constant="15" id="ntw-fU-nkc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oF6-Rc-g7v" secondAttribute="trailing" constant="84" id="rII-b5-x6A"/>
-                            <constraint firstItem="oF6-Rc-g7v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="85" id="rjx-BN-gZL"/>
+                            <constraint firstItem="8bL-gM-kzI" firstAttribute="top" secondItem="oF6-Rc-g7v" secondAttribute="bottom" constant="8" id="rpe-3v-uJW"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JG-CO-07Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831" y="397"/>
+            <point key="canvasLocation" x="977" y="397"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
