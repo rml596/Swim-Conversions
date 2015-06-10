@@ -31,8 +31,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *output1;
 @property (strong, nonatomic) IBOutlet UILabel *output2;
 
-- (IBAction)show:(id)sender;
-- (IBAction)hide:(id)sender;
 
 
 

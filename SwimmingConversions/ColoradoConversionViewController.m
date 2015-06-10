@@ -64,8 +64,8 @@ double convertedSeconds;
     
     coloradoPickerData1=@[@"50",@"100",@"200",@"400",@"500"];
     coloradoPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M."];
-    niscaPickerData1=@[@"50",@"100",@"200",@"400/500"];
-    niscaPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M.",@"Medly Relay",@"Free Relay"];
+    //niscaPickerData1=@[@"50",@"100",@"200",@"400/500"];
+    //niscaPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M.",@"Medly Relay",@"Free Relay"];
     
     self.strokePicker.dataSource=self;
     self.strokePicker.delegate=self;
@@ -2133,14 +2133,5 @@ double convertedSeconds;
     else
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
-}
-
-
-
-
-- (IBAction)show:(id)sender {
-}
-
-- (IBAction)hide:(id)sender {
 }
 @end
