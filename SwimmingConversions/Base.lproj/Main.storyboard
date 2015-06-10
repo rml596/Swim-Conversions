@@ -17,53 +17,39 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swimming Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-f6-U1H">
-                                <rect key="frame" x="9" y="125" width="302" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swimming Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-f6-U1H">
+                                <rect key="frame" x="9" y="159" width="302" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Milliseconds" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-I8-sAT">
-                                <rect key="frame" x="220" y="240" width="84" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="84" id="rlg-wL-PPg"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Milliseconds" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-I8-sAT">
+                                <rect key="frame" x="220" y="247" width="84" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="3ee-lz-bD2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minutes" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2gY-8E-XpX">
-                                <rect key="frame" x="16" y="240" width="84" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minutes" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2gY-8E-XpX">
+                                <rect key="frame" x="16" y="247" width="84" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="xLZ-bQ-tFv"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="479-Uc-hK9">
-                                <rect key="frame" x="41" y="76" width="238" height="29"/>
-                                <segments>
-                                    <segment title="SCY"/>
-                                    <segment title="SCM"/>
-                                    <segment title="LCM"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentedAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Ex6-Yq-CHG"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7m-UJ-EPF">
-                                <rect key="frame" x="9" y="176" width="302" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7m-UJ-EPF">
+                                <rect key="frame" x="9" y="203" width="302" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bL-gM-kzI">
-                                <rect key="frame" x="59" y="328" width="202" height="162"/>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bL-gM-kzI">
+                                <rect key="frame" x="59" y="354" width="202" height="162"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-Rc-g7v">
-                                <rect key="frame" x="101" y="278" width="119" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-Rc-g7v">
+                                <rect key="frame" x="101" y="285" width="119" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Convert">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,90 +58,73 @@
                                     <action selector="convert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UgB-88-yzc"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ale-A0-Dh2">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="USA Swimming" id="hhg-qx-pLe">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="EB0-hC-7he">
-                                            <connections>
-                                                <action selector="tweet:" destination="vXZ-lx-hvc" id="7FH-Yi-jdn"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" id="kud-DE-70B">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="B3K-b0-qFL">
-                                                <rect key="frame" x="220" y="469" width="22" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <connections>
-                                                <segue destination="HAp-Bf-PDM" kind="modal" id="hnS-D5-gcA"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9BK-y4-ung">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="PpC-oz-f7f"/>
-                                    <tabBarItem systemItem="more" id="2Af-76-MrW"/>
-                                </items>
-                            </tabBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-Wb-vN3">
-                                <rect key="frame" x="113" y="240" width="95" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-Wb-vN3">
+                                <rect key="frame" x="113" y="247" width="95" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <action selector="dismissKeyboard:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="FvM-fL-WgA"/>
                                 </connections>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iKf-nN-PsG">
+                                <rect key="frame" x="105" y="28" width="111" height="29"/>
+                                <segments>
+                                    <segment title="USA"/>
+                                    <segment title="NISCA"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="typeSegmentedAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="DPu-ha-7I1"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8G-JJ-kEU">
+                                <rect key="frame" x="103" y="524" width="115" height="30"/>
+                                <state key="normal" title="Swimming News">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HAp-Bf-PDM" kind="modal" id="4gc-G4-5x9"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="127-wo-HJd">
+                                <rect key="frame" x="41" y="64" width="238" height="29"/>
+                                <segments>
+                                    <segment title="SCY"/>
+                                    <segment title="SCM"/>
+                                    <segment title="LCM"/>
+                                </segments>
+                                <connections>
+                                    <action selector="courseSegmentedAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Av7-jZ-z47"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-MM-K2U">
+                                <rect key="frame" x="105" y="100" width="117" height="29"/>
+                                <segments>
+                                    <segment title="Male"/>
+                                    <segment title="Female"/>
+                                </segments>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="genderSegmentedAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="A6o-v5-nQe"/>
+                                    <action selector="typeSegmentedAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="tyo-IC-dyp"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.73073710619999999" green="0.9327323569" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="TCh-f6-U1H" secondAttribute="trailing" constant="-7" id="4Uk-Fy-mh7"/>
-                            <constraint firstItem="2gY-8E-XpX" firstAttribute="top" secondItem="b7m-UJ-EPF" secondAttribute="bottom" constant="28" id="798-w7-O3E"/>
-                            <constraint firstItem="9BK-y4-ung" firstAttribute="top" secondItem="8bL-gM-kzI" secondAttribute="bottom" constant="29" id="9sx-SU-fdi"/>
-                            <constraint firstItem="b7m-UJ-EPF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-7" id="A0V-Kb-8gP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="b7m-UJ-EPF" secondAttribute="trailing" constant="-7" id="Cm2-Z9-eC3"/>
-                            <constraint firstItem="cwU-Wb-vN3" firstAttribute="baseline" secondItem="dNt-I8-sAT" secondAttribute="baseline" id="Etq-yq-BBA"/>
-                            <constraint firstItem="dNt-I8-sAT" firstAttribute="leading" secondItem="cwU-Wb-vN3" secondAttribute="trailing" constant="12" id="FNf-tm-Uiq"/>
-                            <constraint firstItem="cwU-Wb-vN3" firstAttribute="leading" secondItem="2gY-8E-XpX" secondAttribute="trailing" constant="13" id="HAH-20-NKZ"/>
-                            <constraint firstItem="dNt-I8-sAT" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="HAo-k0-L4K"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ale-A0-Dh2" secondAttribute="trailing" constant="-16" id="HFk-Bm-CM2"/>
-                            <constraint firstItem="TCh-f6-U1H" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-7" id="IDY-MM-qhO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8bL-gM-kzI" secondAttribute="trailing" constant="43" id="IjU-Hw-ifA"/>
-                            <constraint firstItem="NX7-Q6-PcW" firstAttribute="top" secondItem="9BK-y4-ung" secondAttribute="bottom" id="KcT-Ft-QQS"/>
-                            <constraint firstItem="479-Uc-hK9" firstAttribute="top" secondItem="Ale-A0-Dh2" secondAttribute="bottom" constant="12" id="RJ8-vU-Jx7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9BK-y4-ung" secondAttribute="trailing" constant="-16" id="Twt-4o-bZt"/>
-                            <constraint firstItem="9BK-y4-ung" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="UDG-p2-D3b"/>
-                            <constraint firstItem="cwU-Wb-vN3" firstAttribute="baseline" secondItem="2gY-8E-XpX" secondAttribute="baseline" id="XVi-OP-gvM"/>
-                            <constraint firstItem="2gY-8E-XpX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Z5x-Qk-UZg"/>
-                            <constraint firstItem="479-Uc-hK9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="25" id="ZG3-4e-zGr"/>
-                            <constraint firstItem="8bL-gM-kzI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="43" id="ade-pn-7G1"/>
-                            <constraint firstItem="Ale-A0-Dh2" firstAttribute="top" secondItem="wEr-D0-25S" secondAttribute="bottom" id="bCi-6q-4w8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oF6-Rc-g7v" secondAttribute="trailing" constant="84" id="fCB-C5-tjB"/>
-                            <constraint firstItem="oF6-Rc-g7v" firstAttribute="top" secondItem="cwU-Wb-vN3" secondAttribute="bottom" constant="8" id="fZ0-g3-kUR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="479-Uc-hK9" secondAttribute="trailing" constant="25" id="iDd-7Q-iAc"/>
-                            <constraint firstItem="TCh-f6-U1H" firstAttribute="top" secondItem="479-Uc-hK9" secondAttribute="bottom" constant="21" id="iUT-ah-bdp"/>
-                            <constraint firstItem="Ale-A0-Dh2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="k5a-JI-fF8"/>
-                            <constraint firstItem="oF6-Rc-g7v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="85" id="kst-3Z-7M9"/>
-                            <constraint firstItem="b7m-UJ-EPF" firstAttribute="top" secondItem="TCh-f6-U1H" secondAttribute="bottom" constant="15" id="ntw-fU-nkc"/>
-                            <constraint firstItem="8bL-gM-kzI" firstAttribute="top" secondItem="oF6-Rc-g7v" secondAttribute="bottom" constant="8" id="rpe-3v-uJW"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="courseSegmentedControl" destination="127-wo-HJd" id="vcI-BR-blD"/>
+                        <outlet property="genderSegmentedControl" destination="M1y-MM-K2U" id="4PH-9F-Ray"/>
                         <outlet property="miliseconds" destination="dNt-I8-sAT" id="cmz-DR-fLV"/>
                         <outlet property="minutes" destination="2gY-8E-XpX" id="mtC-Hs-ycQ"/>
                         <outlet property="output1" destination="TCh-f6-U1H" id="8HO-zw-264"/>
                         <outlet property="output2" destination="b7m-UJ-EPF" id="Ean-FQ-j7H"/>
                         <outlet property="seconds" destination="cwU-Wb-vN3" id="Qir-YR-rcQ"/>
-                        <outlet property="segmentedControl" destination="479-Uc-hK9" id="kEo-Go-6lw"/>
                         <outlet property="strokePicker" destination="8bL-gM-kzI" id="uRh-tk-ORw"/>
+                        <outlet property="typeSegmentedControl" destination="iKf-nN-PsG" id="8kU-2o-frr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ColoradoConversionViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-- (IBAction)segmentedAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *courseSegmentedControl;
+- (IBAction)courseSegmentedAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
+- (IBAction)typeSegmentedAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *genderSegmentedControl;
+- (IBAction)genderSegmentedAction:(id)sender;
+
 
 @property (strong, nonatomic) IBOutlet UITextField *minutes;
 @property (strong, nonatomic) IBOutlet UITextField *seconds;
@@ -25,6 +30,11 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *output1;
 @property (strong, nonatomic) IBOutlet UILabel *output2;
+
+- (IBAction)show:(id)sender;
+- (IBAction)hide:(id)sender;
+
+
 
 @end
 

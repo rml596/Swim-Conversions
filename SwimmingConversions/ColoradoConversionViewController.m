@@ -16,12 +16,18 @@
 
 @implementation ColoradoConversionViewController
 
-NSArray *pickerData1;
-NSArray *pickerData2;
+NSArray *coloradoPickerData1;
+NSArray *coloradoPickerData2;
+NSArray *niscaPickerData1;
+NSArray *niscaPickerData2;
+
 NSString *convertSCY;
 NSString *convertSCM;
 NSString *convertLCM;
-int segmentedValue;
+int segmentedCourseValue;
+int segmentedTypeValue;
+int segmentedGenderValue;
+
 
 int distance;
 int strokeType;
@@ -56,8 +62,10 @@ double convertedSeconds;
     [super viewDidLoad];
 
     
-    pickerData1=@[@"50",@"100",@"200",@"400",@"500"];
-    pickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M."];
+    coloradoPickerData1=@[@"50",@"100",@"200",@"400",@"500"];
+    coloradoPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M."];
+    niscaPickerData1=@[@"50",@"100",@"200",@"400/500"];
+    niscaPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M.",@"Medly Relay",@"Free Relay"];
     
     self.strokePicker.dataSource=self;
     self.strokePicker.delegate=self;
@@ -81,10 +89,10 @@ double convertedSeconds;
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     //used for picker
     if (component == 0) {
-        return [pickerData1 count];
+        return [coloradoPickerData1 count];
     }
     else {
-        return [pickerData2 count];
+        return [coloradoPickerData2 count];
     }
     
 }
@@ -92,10 +100,10 @@ double convertedSeconds;
     //used for picker
     // Component 0 should load the pickerData1 values, Component 1 will have the pickerData2 values
     if (component == 0) {
-        return [pickerData1 objectAtIndex:row];
+        return [coloradoPickerData1 objectAtIndex:row];
     }
     else if (component == 1) {
-        return [pickerData2 objectAtIndex:row];
+        return [coloradoPickerData2 objectAtIndex:row];
     }
     return nil;
 }
@@ -155,542 +163,549 @@ double convertedSeconds;
         self.output2.text=@"";
     }
     //based on the SegmentedView, a diffrent formula is selected to run
-    else if (segmentedValue==0) {
-        //SCY is Selected (and entered)
-        if (distance==0) {
-            //50s
-            if(strokeType==0){
-                //fly
-                [self fiftyFlyConversionSCYtoSCM];
-                [self fiftyFlyConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self fiftyBackConversionSCYtoSCM];
-                [self fiftyBackConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self fiftyBreastConversionSCYtoSCM];
-                [self fiftyBreastConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+    else if (segmentedTypeValue==0){
+        //if selected USA
+        if (segmentedCourseValue==0) {
+            //SCY is Selected (and entered)
+            if (distance==0) {
+                //50s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoFiftyFlyConversionSCYtoSCM];
+                    [self coloradoFiftyFlyConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
                 }
-            else if (strokeType==3){
-                //free
-                [self fiftyFreeConversionSCYtoSCM];
-                [self fiftyFreeConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+                else if (strokeType==1){
+                    //back
+                    [self coloradoFiftyBackConversionSCYtoSCM];
+                    [self coloradoFiftyBackConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoFiftyBreastConversionSCYtoSCM];
+                    [self coloradoFiftyBreastConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                    }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoFiftyFreeConversionSCYtoSCM];
+                    [self coloradoFiftyFreeConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    self.output1.text=@"There is no 50 I.M.";
+                    self.output2.text=@"";
+                }
             }
-            else if (strokeType==4){
-                //IM
-                self.output1.text=@"There is no 50 I.M.";
-                self.output2.text=@"";
-            }
-        }
-        else if (distance==1) {
-            //100s
-            if(strokeType==0){
-                //fly
-                [self hundredFlyConversionSCYtoSCM];
-                //[self hundredFlyConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==1){
+            else if (distance==1) {
+                //100s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoHundredFlyConversionSCYtoSCM];
+                    [self coloradoHundredFlyConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==1){
                 //back
-                [self hundredBackConversionSCYtoSCM];
-                [self hundredBackConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+                    [self coloradoHundredBackConversionSCYtoSCM];
+                    [self coloradoHundredBackConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoHundredBreastConversionSCYtoSCM];
+                    [self coloradoHundredBreastConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoHundredFreeConversionSCYtoSCM];
+                    [self coloradoHundredFreeConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoHundredIMConversionSCYtoSCM];
+                    [self coloradoHundredIMConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
             }
-            else if (strokeType==2){
-                //breast
-                [self hundredBreastConversionSCYtoSCM];
-                [self hundredBreastConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==2){
+                //200s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoTwoHundredFlyConversionSCYtoSCM];
+                    [self coloradoTwoHundredFlyConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoTwoHundredBackConversionSCYtoSCM];
+                    [self coloradoTwoHundredBackConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoTwoHundredBreastConversionSCYtoSCM];
+                    [self coloradoTwoHundredBreastConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoTwoHundredFreeConversionSCYtoSCM];
+                    [self coloradoTwoHundredFreeConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoTwoHundredIMConversionSCYtoSCM];
+                    [self coloradoTwoHundredIMConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
             }
-            else if (strokeType==3){
-                //free
-                [self hundredFreeConversionSCYtoSCM];
-                [self hundredFreeConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==3){
+                //400s
+                if(strokeType==0){
+                    //fly
+                    self.output1.text=@"There is no 400 Fly";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==1){
+                    //back
+                    self.output1.text=@"There is no 400 Back";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==2){
+                    //breast
+                    self.output1.text=@"There is no 400 Breast";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoFiveHundredFreeConversionSCYtoSCM];
+                    [self coloradoFiveHundredFreeConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoFourHundredIMConversionSCYtoSCM];
+                    [self coloradoFourHundredIMConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
             }
-            else if (strokeType==4){
-                //IM
-                [self hundredIMConversionSCYtoSCM];
-                [self hundredIMConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==4){
+                //500s
+                if(strokeType==0){
+                    //fly
+                    self.output1.text=@"There is no 500 Fly";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==1){
+                    //back
+                    self.output1.text=@"There is no 500 Back";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==2){
+                    //breast
+                    self.output1.text=@"There is no 500 Breast";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoFiveHundredFreeConversionSCYtoSCM];
+                    [self coloradoFiveHundredFreeConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoFourHundredIMConversionSCYtoSCM];
+                    [self coloradoFourHundredIMConversionSCYtoLCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertLCM;
+                }
             }
         }
-        else if (distance==2){
-            //200s
-            if(strokeType==0){
-                //fly
-                [self twoHundredFlyConversionSCYtoSCM];
-                [self twoHundredFlyConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+        else if (segmentedCourseValue==1){
+            //SCM is selected (and entered)
+            if (distance==0) {
+                //50s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFiftyFlyConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFiftyBackConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFiftyBreastConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFiftyFreeConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    self.output1.text=@"There is no 50 I.M.";
+                    self.output2.text=@"";
+                }
             }
-            else if (strokeType==1){
-                //back
-                [self twoHundredBackConversionSCYtoSCM];
-                [self twoHundredBackConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==1) {
+                //100s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoConversionSCMtoSCY];
+                    [self hundredFlyConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoHundredBackConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoHundredBreastConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoHundredFreeConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoHundredIMConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
             }
-            else if (strokeType==2){
-                //breast
-                [self twoHundredBreastConversionSCYtoSCM];
-                [self twoHundredBreastConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==2){
+                //200s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoTwoHundredFlyConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoTwoHundredBackConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoTwoHundredBreastConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoTwoHundredFreeConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoTwoHundredIMConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
             }
-            else if (strokeType==3){
-                //free
-                [self twoHundredFreeConversionSCYtoSCM];
-                [self twoHundredFreeConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==3){
+                //400s
+                if(strokeType==0){
+                    //fly
+                    self.output1.text=@"There is no 400 Fly";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==1){
+                    //back
+                    self.output1.text=@"There is no 400 Back";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==2){
+                    //breast
+                    self.output1.text=@"There is no 400 Breast";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFourHundredFreeConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFourHundredIMConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
             }
-            else if (strokeType==4){
-                //IM
-                [self twoHundredIMConversionSCYtoSCM];
-                [self twoHundredIMConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==4){
+                //500s
+                if(strokeType==0){
+                    //fly
+                    self.output1.text=@"There is no 500 Fly";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==1){
+                    //back
+                    self.output1.text=@"There is no 500 Back";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==2){
+                    //breast
+                    self.output1.text=@"There is no 500 Breast";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFourHundredFreeConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoConversionSCMtoSCY];
+                    [self coloradoFourHundredIMConversionSCMtoLCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertLCM;
+                }
             }
         }
-        else if (distance==3){
+        else if (segmentedCourseValue==2){
+            //if LCM is selected (and entered)
+            if (distance==0) {
+                //50s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoFiftyFlyConversionLCMtoSCY];
+                    [self coloradoFiftyFlyConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoFiftyBackConversionLCMtoSCY];
+                    [self coloradoFiftyBackConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoFiftyBreastConversionLCMtoSCY];
+                    [self coloradoFiftyBreastConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoFiftyFreeConversionLCMtoSCY];
+                    [self coloradoFiftyFreeConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    self.output1.text=@"There is no 50 I.M.";
+                    self.output2.text=@"";
+                }
+            }
+            else if (distance==1) {
+                //100s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoHundredFlyConversionLCMtoSCY];
+                    [self coloradoHundredFlyConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoHundredBackConversionLCMtoSCY];
+                    [self coloradoHundredBackConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoHundredBreastConversionLCMtoSCY];
+                    [self coloradoHundredBreastConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoHundredFreeConversionLCMtoSCY];
+                    [self coloradoHundredFreeConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoHundredIMConversionLCMtoSCY];
+                    [self coloradoHundredIMConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+            }
+            else if (distance==2){
+                //200s
+                if(strokeType==0){
+                    //fly
+                    [self coloradoTwoHundredFlyConversionLCMtoSCY];
+                    [self coloradoTwoHundredFlyConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==1){
+                    //back
+                    [self coloradoTwoHundredBackConversionLCMtoSCY];
+                    [self coloradoTwoHundredBackConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==2){
+                    //breast
+                    [self coloradoTwoHundredBreastConversionLCMtoSCY];
+                    [self coloradoTwoHundredBreastConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoTwoHundredFreeConversionLCMtoSCY];
+                    [self coloradoTwoHundredFreeConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoTwoHundredIMConversionLCMtoSCY];
+                    [self coloradoTwoHundredIMConversionLCMtoSCM];
+                    self.output1.text=convertSCY;
+                    self.output2.text=convertSCM;
+                }
+            }
+            else if (distance==3){
             //400s
-            if(strokeType==0){
-                //fly
-                self.output1.text=@"There is no 400 Fly";
-                self.output2.text=@"";
+                if(strokeType==0){
+                    //fly
+                    self.output1.text=@"There is no 400 Fly";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==1){
+                    //back
+                    self.output1.text=@"There is no 400 Back";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==2){
+                    //breast
+                    self.output1.text=@"There is no 400 Breast";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoFiveHundredFreeConversionLCMtoSCY];
+                    [self coloradoFourHundredFreeConversionLCMtoSCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoFourHundredIMConversionLCMtoSCY];
+                    [self coloradoFourHundredIMConversionLCMtoSCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertSCM;
+                }
             }
-            else if (strokeType==1){
-                //back
-                self.output1.text=@"There is no 400 Back";
-                self.output2.text=@"";
-            }
-            else if (strokeType==2){
-                //breast
-                self.output1.text=@"There is no 400 Breast";
-                self.output2.text=@"";
-            }
-            else if (strokeType==3){
-                //free
-                [self fiveHundredFreeConversionSCYtoSCM];
-                [self fiveHundredFreeConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self fourHundredIMConversionSCYtoSCM];
-                [self fourHundredIMConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
-            }
-        }
-        else if (distance==4){
-        //500s
-            if(strokeType==0){
-                //fly
-                self.output1.text=@"There is no 500 Fly";
-                self.output2.text=@"";
-            }
-            else if (strokeType==1){
-                //back
-                self.output1.text=@"There is no 500 Back";
-                self.output2.text=@"";
-            }
-            else if (strokeType==2){
-                //breast
-                self.output1.text=@"There is no 500 Breast";
-                self.output2.text=@"";
-            }
-            else if (strokeType==3){
-                //free
-                [self fiveHundredFreeConversionSCYtoSCM];
-                [self fiveHundredFreeConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self fourHundredIMConversionSCYtoSCM];
-                [self fourHundredIMConversionSCYtoLCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertLCM;
+            else if (distance==4){
+                //500s
+                if(strokeType==0){
+                    //fly
+                    self.output1.text=@"There is no 500 Fly";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==1){
+                    //back
+                    self.output1.text=@"There is no 500 Back";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==2){
+                    //breast
+                    self.output1.text=@"There is no 500 Breast";
+                    self.output2.text=@"";
+                }
+                else if (strokeType==3){
+                    //free
+                    [self coloradoFiveHundredFreeConversionLCMtoSCY];
+                    [self coloradoFourHundredFreeConversionLCMtoSCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertSCM;
+                }
+                else if (strokeType==4){
+                    //IM
+                    [self coloradoFourHundredIMConversionLCMtoSCY];
+                    [self coloradoFourHundredIMConversionLCMtoSCM];
+                    self.output1.text=convertSCM;
+                    self.output2.text=convertSCM;
+                }
             }
         }
     }
-    else if (segmentedValue==1){
-        //SCM is selected (and entered)
-        if (distance==0) {
-            //50s
-            if(strokeType==0){
-                //fly
-                [self conversionSCMtoSCY];
-                [self fiftyFlyConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self conversionSCMtoSCY];
-                [self fiftyBackConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self conversionSCMtoSCY];
-                [self fiftyBreastConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==3){
-                //free
-                [self conversionSCMtoSCY];
-                [self fiftyFreeConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                self.output1.text=@"There is no 50 I.M.";
-                self.output2.text=@"";
-            }
-        }
-        else if (distance==1) {
-            //100s
-            if(strokeType==0){
-                //fly
-                [self conversionSCMtoSCY];
-                [self hundredFlyConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self conversionSCMtoSCY];
-                [self hundredBackConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self conversionSCMtoSCY];
-                [self hundredBreastConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==3){
-                //free
-                [self conversionSCMtoSCY];
-                [self hundredFreeConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self conversionSCMtoSCY];
-                [self hundredIMConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-        }
-        else if (distance==2){
-            //200s
-            if(strokeType==0){
-                //fly
-                [self conversionSCMtoSCY];
-                [self twoHundredFlyConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self conversionSCMtoSCY];
-                [self twoHundredBackConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self conversionSCMtoSCY];
-                [self twoHundredBreastConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==3){
-                //free
-                [self conversionSCMtoSCY];
-                [self twoHundredFreeConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self conversionSCMtoSCY];
-                [self twoHundredIMConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-        }
-        else if (distance==3){
-            //400s
-            if(strokeType==0){
-                //fly
-                self.output1.text=@"There is no 400 Fly";
-                self.output2.text=@"";
-            }
-            else if (strokeType==1){
-                //back
-                self.output1.text=@"There is no 400 Back";
-                self.output2.text=@"";
-            }
-            else if (strokeType==2){
-                //breast
-                self.output1.text=@"There is no 400 Breast";
-                self.output2.text=@"";
-            }
-            else if (strokeType==3){
-                //free
-                [self conversionSCMtoSCY];
-                [self fourHundredFreeConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self conversionSCMtoSCY];
-                [self fourHundredIMConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-        }
-        else if (distance==4){
-            //500s
-            if(strokeType==0){
-                //fly
-                self.output1.text=@"There is no 500 Fly";
-                self.output2.text=@"";
-            }
-            else if (strokeType==1){
-                //back
-                self.output1.text=@"There is no 500 Back";
-                self.output2.text=@"";
-            }
-            else if (strokeType==2){
-                //breast
-                self.output1.text=@"There is no 500 Breast";
-                self.output2.text=@"";
-            }
-            else if (strokeType==3){
-                //free
-                [self conversionSCMtoSCY];
-                [self fourHundredFreeConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self conversionSCMtoSCY];
-                [self fourHundredIMConversionSCMtoLCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertLCM;
-            }
-        }
-    }
-    else if (segmentedValue==2){
-        //if LCM is selected (and entered)
-        if (distance==0) {
-            //50s
-            if(strokeType==0){
-                //fly
-                [self fiftyFlyConversionLCMtoSCY];
-                [self fiftyFlyConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self fiftyBackConversionLCMtoSCY];
-                [self fiftyBackConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self fiftyBreastConversionLCMtoSCY];
-                [self fiftyBreastConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==3){
-                //free
-                [self fiftyFreeConversionLCMtoSCY];
-                [self fiftyFreeConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==4){
-                //IM
-                self.output1.text=@"There is no 50 I.M.";
-                self.output2.text=@"";
-            }
-        }
-        else if (distance==1) {
-            //100s
-            if(strokeType==0){
-                //fly
-                [self hundredFlyConversionLCMtoSCY];
-                [self hundredFlyConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self hundredBackConversionLCMtoSCY];
-                [self hundredBackConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self hundredBreastConversionLCMtoSCY];
-                [self hundredBreastConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==3){
-                //free
-                [self hundredFreeConversionLCMtoSCY];
-                [self hundredFreeConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self hundredIMConversionLCMtoSCY];
-                [self hundredIMConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-        }
-        else if (distance==2){
-            //200s
-            if(strokeType==0){
-                //fly
-                [self twoHundredFlyConversionLCMtoSCY];
-                [self twoHundredFlyConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==1){
-                //back
-                [self twoHundredBackConversionLCMtoSCY];
-                [self twoHundredBackConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==2){
-                //breast
-                [self twoHundredBreastConversionLCMtoSCY];
-                [self twoHundredBreastConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==3){
-                //free
-                [self twoHundredFreeConversionLCMtoSCY];
-                [self twoHundredFreeConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self twoHundredIMConversionLCMtoSCY];
-                [self twoHundredIMConversionLCMtoSCM];
-                self.output1.text=convertSCY;
-                self.output2.text=convertSCM;
-            }
-        }
-        else if (distance==3){
-            //400s
-            if(strokeType==0){
-                //fly
-                self.output1.text=@"There is no 400 Fly";
-                self.output2.text=@"";
-            }
-            else if (strokeType==1){
-                //back
-                self.output1.text=@"There is no 400 Back";
-                self.output2.text=@"";
-            }
-            else if (strokeType==2){
-                //breast
-                self.output1.text=@"There is no 400 Breast";
-                self.output2.text=@"";
-            }
-            else if (strokeType==3){
-                //free
-                [self fiveHundredFreeConversionLCMtoSCY];
-                [self fourHundredFreeConversionLCMtoSCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self fourHundredIMConversionLCMtoSCY];
-                [self fourHundredIMConversionLCMtoSCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertSCM;
-            }
-        }
-        else if (distance==4){
-            //500s
-            if(strokeType==0){
-                //fly
-                self.output1.text=@"There is no 500 Fly";
-                self.output2.text=@"";
-            }
-            else if (strokeType==1){
-                //back
-                self.output1.text=@"There is no 500 Back";
-                self.output2.text=@"";
-            }
-            else if (strokeType==2){
-                //breast
-                self.output1.text=@"There is no 500 Breast";
-                self.output2.text=@"";
-            }
-            else if (strokeType==3){
-                //free
-                [self fiveHundredFreeConversionLCMtoSCY];
-                [self fourHundredFreeConversionLCMtoSCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertSCM;
-            }
-            else if (strokeType==4){
-                //IM
-                [self fourHundredIMConversionLCMtoSCY];
-                [self fourHundredIMConversionLCMtoSCM];
-                self.output1.text=convertSCM;
-                self.output2.text=convertSCM;
-            }
-        }
+    else if(segmentedTypeValue==1){
+        //if NISCA is selected
+        
     }
 }
 
@@ -699,21 +714,39 @@ double convertedSeconds;
     [sender resignFirstResponder];      //You need a method that allows the user to dismiss the keyboard by tapping
                                         //anywhere on the screen if you're using a decimal keypad. Not required if you're going to use a standard qwerty keyboard. I think the former makes more sense.
 }
-- (IBAction)segmentedAction:(id)sender {
+- (IBAction)courseSegmentedAction:(id)sender {
     //based on what the user selects, sets an int to be used in another method
-    if (_segmentedControl.selectedSegmentIndex==0) {
+    if (_courseSegmentedControl.selectedSegmentIndex==0) {
         //if selected on SCY
-        segmentedValue=0;
+        segmentedCourseValue=0;
     }
-    else if (_segmentedControl.selectedSegmentIndex==1){
+    else if (_courseSegmentedControl.selectedSegmentIndex==1){
         //if selected on SCM
-        segmentedValue=1;
+        segmentedCourseValue=1;
     }
-    else if (_segmentedControl.selectedSegmentIndex==2){
+    else if (_courseSegmentedControl.selectedSegmentIndex==2){
         //if selected on LCM
-        segmentedValue=2;
+        segmentedCourseValue=2;
     }
 }
+- (IBAction)typeSegmentedAction:(id)sender {
+    //based on what the user enters, runs USA conversions or NISCA
+    if (_typeSegmentedControl.selectedSegmentIndex==0) {
+        segmentedTypeValue=0;
+    }
+    else if (_typeSegmentedControl.selectedSegmentIndex==1){
+        segmentedTypeValue=1;
+    }
+}
+- (IBAction)genderSegmentedAction:(id)sender {
+    if (_genderSegmentedControl.selectedSegmentIndex==0) {
+        segmentedGenderValue=0;
+    }
+    else if (_genderSegmentedControl.selectedSegmentIndex==1){
+        segmentedGenderValue=1;
+    }
+}
+
 - (IBAction)tweet:(id)sender{
     NSArray *activityItems;
     activityItems = @[self.output1.text];
@@ -738,7 +771,7 @@ double convertedSeconds;
 }
 
 //Conversion Formulas/Methods for SCY-SCM
--(NSString *)fiftyFlyConversionSCYtoSCM{
+-(NSString *)coloradoFiftyFlyConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -754,7 +787,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)hundredFlyConversionSCYtoSCM{
+-(NSString *)coloradoHundredFlyConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -771,7 +804,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)twoHundredFlyConversionSCYtoSCM{
+-(NSString *)coloradoTwoHundredFlyConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -787,7 +820,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)fiftyBackConversionSCYtoSCM{
+-(NSString *)coloradoFiftyBackConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -804,7 +837,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)hundredBackConversionSCYtoSCM{
+-(NSString *)coloradoHundredBackConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -821,7 +854,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)twoHundredBackConversionSCYtoSCM{
+-(NSString *)coloradoTwoHundredBackConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -838,7 +871,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)fiftyBreastConversionSCYtoSCM{
+-(NSString *)coloradoFiftyBreastConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -854,7 +887,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)hundredBreastConversionSCYtoSCM{
+-(NSString *)coloradoHundredBreastConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -871,7 +904,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)twoHundredBreastConversionSCYtoSCM{
+-(NSString *)coloradoTwoHundredBreastConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -887,7 +920,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)fiftyFreeConversionSCYtoSCM{
+-(NSString *)coloradoFiftyFreeConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -904,7 +937,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 }
--(NSString *)hundredFreeConversionSCYtoSCM{
+-(NSString *)coloradoHundredFreeConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -920,7 +953,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)twoHundredFreeConversionSCYtoSCM{
+-(NSString *)coloradoTwoHundredFreeConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -937,7 +970,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)fiveHundredFreeConversionSCYtoSCM{
+-(NSString *)coloradoFiveHundredFreeConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -953,7 +986,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)hundredIMConversionSCYtoSCM{
+-(NSString *)coloradoHundredIMConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -970,7 +1003,7 @@ double convertedSeconds;
     return convertSCM;
     
 };
--(NSString *)twoHundredIMConversionSCYtoSCM{
+-(NSString *)coloradoTwoHundredIMConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -987,7 +1020,7 @@ double convertedSeconds;
     return convertSCM;
 
 };
--(NSString *)fourHundredIMConversionSCYtoSCM{
+-(NSString *)coloradoFourHundredIMConversionSCYtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1006,7 +1039,7 @@ double convertedSeconds;
 
 
 //Conversion Formulas/Methods SCY-LCM
--(NSString *)fiftyFlyConversionSCYtoLCM{
+-(NSString *)coloradoFiftyFlyConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1022,7 +1055,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)hundredFlyConversionSCYtoLCM{
+-(NSString *)coloradoHundredFlyConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1040,7 +1073,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)twoHundredFlyConversionSCYtoLCM{
+-(NSString *)coloradoTwoHundredFlyConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue];
@@ -1057,7 +1090,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)fiftyBackConversionSCYtoLCM{
+-(NSString *)coloradoFiftyBackConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1074,7 +1107,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)hundredBackConversionSCYtoLCM{
+-(NSString *)coloradoHundredBackConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1091,7 +1124,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)twoHundredBackConversionSCYtoLCM{
+-(NSString *)coloradoTwoHundredBackConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1108,7 +1141,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)fiftyBreastConversionSCYtoLCM{
+-(NSString*)coloradoFiftyBreastConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1125,7 +1158,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)hundredBreastConversionSCYtoLCM{
+-(NSString *)coloradoHundredBreastConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1142,7 +1175,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)twoHundredBreastConversionSCYtoLCM{
+-(NSString *)coloradoTwoHundredBreastConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1159,7 +1192,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)fiftyFreeConversionSCYtoLCM{
+-(NSString *)coloradoFiftyFreeConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1177,7 +1210,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
--(NSString *)hundredFreeConversionSCYtoLCM{
+-(NSString *)coloradoHundredFreeConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1194,7 +1227,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)twoHundredFreeConversionSCYtoLCM{
+-(NSString *)coloradoTwoHundredFreeConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1211,7 +1244,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)fiveHundredFreeConversionSCYtoLCM{
+-(NSString *)coloradoFiveHundredFreeConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1228,7 +1261,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
--(NSString *)hundredIMConversionSCYtoLCM{
+-(NSString *)coloradoHundredIMConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1245,7 +1278,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
--(NSString *)twoHundredIMConversionSCYtoLCM{
+-(NSString *)coloradoTwoHundredIMConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1263,7 +1296,7 @@ double convertedSeconds;
     return convertLCM;
     
 };
--(NSString *)fourHundredIMConversionSCYtoLCM{
+-(NSString *)coloradoFourHundredIMConversionSCYtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1283,7 +1316,7 @@ double convertedSeconds;
 
 
 //Conversion Formulas/Methods SCM-SCY
--(NSString *)conversionSCMtoSCY{
+-(NSString *)coloradoConversionSCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1302,7 +1335,7 @@ double convertedSeconds;
 
 
 //Conversion Formula/Methods SCM-LCM
--(NSString *)fiftyFlyConversionSCMtoLCM{
+-(NSString *)coloradoFiftyFlyConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1337,7 +1370,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)twoHundredFlyConversionSCMtoLCM{
+-(NSString *)coloradoTwoHundredFlyConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue];
@@ -1354,7 +1387,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)fiftyBackConversionSCMtoLCM{
+-(NSString *)coloradoFiftyBackConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1371,7 +1404,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)hundredBackConversionSCMtoLCM{
+-(NSString *)coloradoHundredBackConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1388,7 +1421,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)twoHundredBackConversionSCMtoLCM{
+-(NSString *)coloradoTwoHundredBackConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1405,7 +1438,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)fiftyBreastConversionSCMtoLCM{
+-(NSString *)coloradoFiftyBreastConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1422,7 +1455,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)hundredBreastConversionSCMtoLCM{
+-(NSString *)coloradoHundredBreastConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1439,7 +1472,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)twoHundredBreastConversionSCMtoLCM{
+-(NSString *)coloradoTwoHundredBreastConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1456,7 +1489,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString*)fiftyFreeConversionSCMtoLCM{
+-(NSString *)coloradoFiftyFreeConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1474,7 +1507,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 }
--(NSString *)hundredFreeConversionSCMtoLCM{
+-(NSString *)coloradoHundredFreeConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1491,7 +1524,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)twoHundredFreeConversionSCMtoLCM{
+-(NSString *)coloradoTwoHundredFreeConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1508,7 +1541,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)fourHundredFreeConversionSCMtoLCM{
+-(NSString *)coloradoFourHundredFreeConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1525,7 +1558,7 @@ double convertedSeconds;
         convertLCM=[NSString stringWithFormat:@"LCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertLCM;
 };
--(NSString *)hundredIMConversionSCMtoLCM{
+-(NSString *)coloradoHundredIMConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1542,7 +1575,7 @@ double convertedSeconds;
     return convertLCM;
     
 };
--(NSString *)twoHundredIMConversionSCMtoLCM{
+-(NSString *)coloradoTwoHundredIMConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1559,7 +1592,7 @@ double convertedSeconds;
     return convertLCM;
     
 };
--(NSString *)fourHundredIMConversionSCMtoLCM{
+-(NSString *)coloradoFourHundredIMConversionSCMtoLCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1578,7 +1611,7 @@ double convertedSeconds;
 
 
 //Conversion Formulas/Methods LCM-SCM
--(NSString *)fiftyFlyConversionLCMtoSCM{
+-(NSString *)coloradoFiftyFlyConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1594,7 +1627,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)hundredFlyConversionLCMtoSCM{
+-(NSString *)coloradoHundredFlyConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1611,7 +1644,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)twoHundredFlyConversionLCMtoSCM{
+-(NSString *)coloradoTwoHundredFlyConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue];
@@ -1627,7 +1660,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)fiftyBackConversionLCMtoSCM{
+-(NSString *)coloradoFiftyBackConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1643,7 +1676,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)hundredBackConversionLCMtoSCM{
+-(NSString *)coloradoHundredBackConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1659,7 +1692,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)twoHundredBackConversionLCMtoSCM{
+-(NSString *)coloradoTwoHundredBackConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1675,7 +1708,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)fiftyBreastConversionLCMtoSCM{
+-(NSString *)coloradoFiftyBreastConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1691,7 +1724,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)hundredBreastConversionLCMtoSCM{
+-(NSString *)coloradoHundredBreastConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1707,7 +1740,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)twoHundredBreastConversionLCMtoSCM{
+-(NSString *)coloradoTwoHundredBreastConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1723,7 +1756,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString*)fiftyFreeConversionLCMtoSCM{
+-(NSString *)coloradoFiftyFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1740,7 +1773,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 }
--(NSString *)hundredFreeConversionLCMtoSCM{
+-(NSString *)coloradoHundredFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1756,7 +1789,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)twoHundredFreeConversionLCMtoSCM{
+-(NSString *)coloradoTwoHundredFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1772,7 +1805,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)fourHundredFreeConversionLCMtoSCM{
+-(NSString *)coloradoFourHundredFreeConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1788,7 +1821,7 @@ double convertedSeconds;
         convertSCM=[NSString stringWithFormat:@"SCM= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCM;
 };
--(NSString *)hundredIMConversionLCMtoSCM{
+-(NSString *)coloradoHundredIMConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1805,7 +1838,7 @@ double convertedSeconds;
     return convertSCM;
     
 };
--(NSString *)twoHundredIMConversionLCMtoSCM{
+-(NSString *)coloradoTwoHundredIMConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1822,7 +1855,7 @@ double convertedSeconds;
     return convertSCM;
     
 };
--(NSString *)fourHundredIMConversionLCMtoSCM{
+-(NSString *)coloradoFourHundredIMConversionLCMtoSCM{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1841,7 +1874,7 @@ double convertedSeconds;
 
 
 //Conversion Formulas/Methods LCM-SCY
--(NSString *)fiftyFlyConversionLCMtoSCY{
+-(NSString *)coloradoFiftyFlyConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1857,7 +1890,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)hundredFlyConversionLCMtoSCY{
+-(NSString *)coloradoHundredFlyConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1874,7 +1907,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)twoHundredFlyConversionLCMtoSCY{
+-(NSString *)coloradoTwoHundredFlyConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue];
@@ -1890,7 +1923,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)fiftyBackConversionLCMtoSCY{
+-(NSString *)coloradoFiftyBackConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1906,7 +1939,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)hundredBackConversionLCMtoSCY{
+-(NSString *)coloradoHundredBackConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1922,7 +1955,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)twoHundredBackConversionLCMtoSCY{
+-(NSString *)coloradoTwoHundredBackConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1938,7 +1971,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString*)fiftyBreastConversionLCMtoSCY{
+-(NSString *)coloradoFiftyBreastConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1954,7 +1987,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString*)hundredBreastConversionLCMtoSCY{
+-(NSString *)coloradoHundredBreastConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1970,7 +2003,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString*)twoHundredBreastConversionLCMtoSCY{
+-(NSString *)coloradoTwoHundredBreastConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -1986,7 +2019,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString*)fiftyFreeConversionLCMtoSCY{
+-(NSString *)coloradoFiftyFreeConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2003,7 +2036,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 }
--(NSString *)hundredFreeConversionLCMtoSCY{
+-(NSString *)coloradoHundredFreeConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2019,7 +2052,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)twoHundredFreeConversionLCMtoSCY{
+-(NSString *)coloradoTwoHundredFreeConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2035,7 +2068,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)fiveHundredFreeConversionLCMtoSCY{
+-(NSString *)coloradoFiveHundredFreeConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2051,7 +2084,7 @@ double convertedSeconds;
         convertSCY=[NSString stringWithFormat:@"SCY= %d:%.2f",convertedMinutes,convertedSeconds];
     return convertSCY;
 };
--(NSString *)hundredIMConversionLCMtoSCY{
+-(NSString *)coloradoHundredIMConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2068,7 +2101,7 @@ double convertedSeconds;
     return convertSCY;
     
 };
--(NSString *)twoHundredIMConversionLCMtoSCY{
+-(NSString *)coloradoTwoHundredIMConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2085,7 +2118,7 @@ double convertedSeconds;
     return convertSCY;
     
 };
--(NSString *)fourHundredIMConversionLCMtoSCY{
+-(NSString *)coloradoFourHundredIMConversionLCMtoSCY{
     doubleMinutes = [self.minutes.text doubleValue]*60;
     doubleSeconds = [self.seconds.text doubleValue];
     doubleMiliseconds = [self.miliseconds.text doubleValue]/10;
@@ -2103,4 +2136,11 @@ double convertedSeconds;
 }
 
 
+
+
+- (IBAction)show:(id)sender {
+}
+
+- (IBAction)hide:(id)sender {
+}
 @end
