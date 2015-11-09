@@ -7,7 +7,6 @@
 //
 
 #import "ColoradoConversionViewController.h"
-#import "WebViewController.h"
 #import <Social/Social.h>
 
 @interface ColoradoConversionViewController ()
@@ -62,8 +61,6 @@ double convertedSeconds;
     
     coloradoPickerData1=@[@"50",@"100",@"200",@"400",@"500"];
     coloradoPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M."];
-    //niscaPickerData1=@[@"50",@"100",@"200",@"400/500"];
-    //niscaPickerData2=@[@"Fly",@"Back",@"Breast",@"Free",@"I.M.",@"Medly Relay",@"Free Relay"];
     
     self.strokePicker.dataSource=self;
     self.strokePicker.delegate=self;
@@ -161,7 +158,6 @@ double convertedSeconds;
         self.output2.text=@"";
     }
     //based on the SegmentedView, a diffrent formula is selected to run
-        //if selected USA
     if (segmentedCourseValue==0) {
         //SCY is Selected (and entered)
         if (distance==0) {
@@ -723,28 +719,8 @@ double convertedSeconds;
     }
 }
 
-- (IBAction)tweet:(id)sender{
-    NSArray *activityItems;
-    activityItems = @[self.output1.text];
-
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
-    [self presentViewController:activityController
-                       animated:YES completion:nil];
-    
-}
-
-///////////This was the method needed to properly configure the webView//////////////////////
 
 
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([[segue identifier] isEqualToString:@"showWebView"])
-    {
-        NSString *url = @"http://www.swimswam.com/news/";
-        WebViewController *webVC = [segue destinationViewController];
-        webVC.urlString = url;
-    
-    }
-}
 
 //Conversion Formulas/Methods for SCY-SCM
 -(NSString *)coloradoFiftyFlyConversionSCYtoSCM{

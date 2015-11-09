@@ -15,7 +15,6 @@
 		664D60131ADEB3AA007EFA0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664D60121ADEB3AA007EFA0A /* Images.xcassets */; };
 		664D60161ADEB3AA007EFA0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664D60141ADEB3AA007EFA0A /* LaunchScreen.xib */; };
 		664D60221ADEB3AA007EFA0A /* SwimmingConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 664D60211ADEB3AA007EFA0A /* SwimmingConversionsTests.m */; };
-		6693FFB01AF126C900FD8E78 /* WebViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6693FFAF1AF126C900FD8E78 /* WebViewController.h */; };
 		66F857E21B0B742700D1F14E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F857E11B0B742700D1F14E /* Social.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,8 +43,6 @@
 		664D601B1ADEB3AA007EFA0A /* SwimmingConversionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimmingConversionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		664D60201ADEB3AA007EFA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		664D60211ADEB3AA007EFA0A /* SwimmingConversionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwimmingConversionsTests.m; sourceTree = "<group>"; };
-		6693FFAE1AF126C900FD8E78 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		6693FFAF1AF126C900FD8E78 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		66F857E11B0B742700D1F14E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -94,8 +91,6 @@
 				664D600A1ADEB3AA007EFA0A /* AppDelegate.m */,
 				664D600C1ADEB3AA007EFA0A /* ColoradoConversionViewController.h */,
 				664D600D1ADEB3AA007EFA0A /* ColoradoConversionViewController.m */,
-				6693FFAF1AF126C900FD8E78 /* WebViewController.h */,
-				6693FFAE1AF126C900FD8E78 /* WebViewController.m */,
 				664D600F1ADEB3AA007EFA0A /* Main.storyboard */,
 				664D60121ADEB3AA007EFA0A /* Images.xcassets */,
 				664D60141ADEB3AA007EFA0A /* LaunchScreen.xib */,
@@ -175,7 +170,7 @@
 		664D5FFA1ADEB3AA007EFA0A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Robert Lynch Development";
 				TargetAttributes = {
 					664D60011ADEB3AA007EFA0A = {
@@ -236,7 +231,6 @@
 				664D600E1ADEB3AA007EFA0A /* ColoradoConversionViewController.m in Sources */,
 				664D600B1ADEB3AA007EFA0A /* AppDelegate.m in Sources */,
 				664D60081ADEB3AA007EFA0A /* main.m in Sources */,
-				6693FFB01AF126C900FD8E78 /* WebViewController.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +293,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -366,6 +361,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SwimmingConversions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rldprogramming.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -379,6 +375,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SwimmingConversions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rldprogramming.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -398,6 +395,7 @@
 				);
 				INFOPLIST_FILE = SwimmingConversionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rldprogramming.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwimmingConversions.app/SwimmingConversions";
 			};
@@ -413,6 +411,7 @@
 				);
 				INFOPLIST_FILE = SwimmingConversionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rldprogramming.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwimmingConversions.app/SwimmingConversions";
 			};

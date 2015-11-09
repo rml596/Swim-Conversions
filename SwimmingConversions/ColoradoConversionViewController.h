@@ -22,7 +22,6 @@
 
 
 -  (IBAction)dismissKeyboard:(id)sender;
-- (IBAction)tweet:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *output1;
 @property (strong, nonatomic) IBOutlet UILabel *output2;
